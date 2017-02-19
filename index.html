@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Title of the document</title>
+<title>12sml_v2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <body>
-The content of the document......
+<div id="test"></div>
+<script src="meetingclass.js"></script>
+<!-- Test for Meeting Class -->
+<script>
+var meeting1 = new Meeting("Tacoma", "6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+$("#test").append(meeting1.toTableRow("Mon"));
+</script>
 </body>
 
 </html>
