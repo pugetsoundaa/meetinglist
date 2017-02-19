@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* 12 Step Meeting List CSS */
+
+/* makes O/C column values align center */
+.oc {
+	text-align: center;	
+}
+
+/* main 12smc div */
+#sml_maindiv {
+	margin: 10px;
+}
+
+.sml_table {
+	width: 100%;	
+}
+
+
+/* search stuff */
+#sml_customsearch {
+	margin: 10px;
+}
+
+.search_checkbox {
+	display: inline-block !important;
+	margin-right: 10px !important;
+}
+
+#searchsubmit {
+	margin: 1.5em 1em 1em 1em;
+}
+
+/* Meeting Code */
+
+.codekey {
+	font-size: 0.9em;
+	margin-left: 8px;	
+}
+
+.clickmsg {
+        font-size: 1.2em;
+        color: rgb(0, 0, 0);
+        margin-top: 30px;
+        margin-bottom: 30px;
+}
+
+/* Hide Print Table */
+#invisibletable {
+	display: none;
+}
+
+/* Messages */
+#nomeetingmsg, #searchmsg {
+	font-size: 1.5em;
+}
+
+#titlepar {
+	margin-bottom: 2px;
+}
+
+#subtitlepar {
+	margin-left: 30px;
+	margin-top: 2px;
+	font-size: 1.25em;
+	margin-bottom: 25px;
+}

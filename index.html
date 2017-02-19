@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>12sml_v2</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
+	<head>
+		<title>12sml_v2</title>
+		
+		<!--dependencies-->
+		<script src="jquery_1_9_1.min.js"></script>
+		<script src="footable.js"></script>
+		<script src="footable.sort.js"></script>
+		<link rel="stylesheet" type="text/css" href="footable.core.min.css">
+		<link rel="stylesheet" type="text/css" href="pure_forms_0_6_0.min.css">
+		<link rel="stylesheet" type="text/css" href="pure_tables_0_6_0.min.css">
+		
+		<!--12sml_v2 CSS-->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="printstyle.css">
+		
+		<!--12sml_v2 scripts-->
+		<script src="meetingclass.js"></script>
+	</head>
 
-<body>
-<div id="test"></div>
-<script src="meetingclass.js"></script>
-<!-- Test for Meeting Class -->
-<script>
-var meeting1 = new Meeting("Tacoma", "6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
-$("#test").append(meeting1.toTableRow("Mon"));
-</script>
-</body>
+	<body>
+		<!-- footable initialization -->
+		<script type="text/javascript">
+			$(function () {$('.footable').footable({addRowToggle: false}); });
+		</script>
+		<table class="pure-table pure-table-bordered footable table sml_table">
+			<thead>
+				<tr>
+				<th class="oc" data-sort-ignore="true">Day</th><th data-sort-initial="true" data-type="numeric">Time</th><th class="oc" data-hide="phone">O/C</th><th>Name</th><th data-hide="phone" data-sort-ignore="true">Address</th><th>City</th><th data-hide="all" data-sort-ignore="true">Notes</th>
+				</tr>
+			</thead>
+			<tbody id="test">
+			</tbody>
+		</table>
 
+	
+
+		<!-- Test for Meeting Class -->
+		<script>
+		var meeting1 = new Meeting("Tacoma", "6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		$("#test").append(meeting1.toTableRow("Mon"));
+		var meeting2 = new Meeting("Pacoma", "7:30 PM", "1930", true, "South Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		$("#test").append(meeting2.toTableRow("Mon"));
+		var meeting3 = new Meeting("Wacoma", "8:30 PM", "2030", true, "East Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		$("#test").append(meeting3.toTableRow("Mon"));
+		var meeting4 = new Meeting("Nacoma", "9:30 PM", "2130", true, "West Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		$("#test").append(meeting4.toTableRow("Mon"));
+		</script>
+	</body>
 </html>
