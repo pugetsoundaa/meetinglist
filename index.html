@@ -17,13 +17,44 @@
 		
 		<!--12sml_v2 scripts-->
 		<script src="meetingclass.js"></script>
+		<script src="createquery.js"></script>
+		<script src="createarray.js"></script>
+		<script src="createlist.js"></script>
 	</head>
 
 	<body>
+		<!-- main meeting list div-->
+		<div id="sml_maindiv">
+
+			<!-- table heading -->
+			<h2 id="titlepar"><span id="titdes">All Meetings</span> <span id="mtgnum"></span></h2>
+			<p id="subtitlepar"><span id="subtitdes"></span></p>
+			<h3 id="printlink"><a href="javascript:window.print()">Print This Meeting List</a></h3>
+			<p class="codekey">O = Open Meeting, C = Closed Meeting, M = Men's Meeting, W = Women's Meeting, S = Spanish Speaking, G = LGBTQI, H = Handicap Accessible, KF = Kid Friendly, SI = Sign Language Interpreter, VSI = Volunteer SI (To Arrange Call CSO Accessibilities at 253-474-8897), @ = Alanon Meeting Runs Concurrently</p>
+			<p class="clickmsg"><strong><span style="color:red">Note:&nbsp;</span></strong> Click On A Row To Display Additional Meeting Info</p>
+
+			<!-- the table -->
+			<div id="sml_table">
+
+			</div>
+		</div>
+		
+
 		<!-- footable initialization -->
 		<script type="text/javascript">
 			$(function () {$('.footable').footable({addRowToggle: false}); });
 		</script>
+
+		<!--
+		// 1.) creates query
+		// 2.) creates meeting array from query
+		// 3. ) creates meeting list from meeting array
+		-->
+		<script>
+			createMeetingList(createMeetingArray(createMeetingQuery()));
+		</script>
+
+		<!-- table for testing
 		<table class="pure-table pure-table-bordered footable table sml_table">
 			<thead>
 				<tr>
@@ -32,20 +63,18 @@
 			</thead>
 			<tbody id="test">
 			</tbody>
-		</table>
-
-	
-
-		<!-- Test for Meeting Class -->
+		</table>-->
+		
+		<!-- Test for Meeting Class
 		<script>
-		var meeting1 = new Meeting("Tacoma", "6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		var meeting1 = new Meeting("6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Tacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
 		$("#test").append(meeting1.toTableRow("Mon"));
-		var meeting2 = new Meeting("Pacoma", "7:30 PM", "1930", true, "South Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		var meeting2 = new Meeting("7:30 PM", "1930", true, "South Star", "2710 N Madison St", "Pacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
 		$("#test").append(meeting2.toTableRow("Mon"));
-		var meeting3 = new Meeting("Wacoma", "8:30 PM", "2030", true, "East Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		var meeting3 = new Meeting("8:30 PM", "2030", true, "East Star", "2710 N Madison St", "Wacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
 		$("#test").append(meeting3.toTableRow("Mon"));
-		var meeting4 = new Meeting("Nacoma", "9:30 PM", "2130", true, "West Star", "2710 N Madison St", "Mason United Methodist Church, upstairs lobby", "Coolest meeting around", "98407", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
+		var meeting4 = new Meeting("9:30 PM", "2130", true, "West Star", "2710 N Madison St", "Nacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
 		$("#test").append(meeting4.toTableRow("Mon"));
-		</script>
+		</script>-->
 	</body>
 </html>

@@ -3,16 +3,15 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_city, in_stime, in_stime_num, in_open, in_mname, in_address, in_notes, in_meta, in_zipcode, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_vsi, in_alanon){
-		this.city = in_city;
+	constructor(in_stime, in_stime_num, in_open, in_mname, in_address, in_city, in_zipcode, in_notes, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_vsi, in_alanon){
 		this.stime = in_stime;
 		this.stime_num = in_stime_num;
 		this.open = in_open;
 		this.mname = in_mname;
 		this.address = in_address;
-		this.notes = in_notes;
-		this.meta = in_meta;
+		this.city = in_city;
 		this.zipcode = in_zipcode;
+		this.notes = in_notes;
 		this.lupdate = in_lupdate;
 		this.sunday = in_sunday;
 		this.monday = in_monday;
@@ -36,19 +35,19 @@ class Meeting{
 	toTableRow(day){
 		
 		// sets the character to print out for Open or Closed
-		var open_char = "C";
+		let open_char = "C";
 		if(this.open){
 			open_char = 'O';
 		}
 		
 		// adds the meeting codes to the end of the meeting name
-		var newmname = Meeting.addToName(this.mname);
+		let newmname = Meeting.addToName(this.mname);
 
 		// combines address pieces together to create a whole address
-		var wholeaddress = this.address+", "+this.city+" WA "+this.zipcode;
+		let wholeaddress = this.address+", "+this.city+" WA "+this.zipcode;
 		
 		// adds the last update date at the end of the meeting notes
-		var newnotes;
+		let newnotes;
 		if (this.notes == "") {
 			newnotes = this.notes+"Info Last Updated: "+this.lupdate;
 		}
@@ -57,7 +56,7 @@ class Meeting{
 		}
 		
 		// creates a String of the meeting info as an HTML table row and returns it
-		var htmlstring = "<tr><td class=\"oc\">"+day+"</td>"; // day, input as parameter
+		let htmlstring = "<tr><td class=\"oc\">"+day+"</td>"; // day, input as parameter
 		htmlstring = htmlstring+"<td data-value=\""+this.stime_num+"\">"+this.stime+"</td>"; // String start time with numeric data-value for sorting
 		htmlstring = htmlstring+"<td class=\"oc\">"+open_char+"</td><td>"+newmname+"</td>"; // O or C and New Name
 		
