@@ -15,11 +15,22 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" type="text/css" href="printstyle.css">
 		
-		<!--12sml_v2 scripts-->
+		<!--12sml_v2 JS-->
 		<script src="meetingclass.js"></script>
 		<script src="createquery.js"></script>
 		<script src="createarray.js"></script>
 		<script src="createlist.js"></script>
+
+		<!-- Google Chart JS-->
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+  			google.charts.load('current', {packages: ['corechart']});
+  			google.charts.setOnLoadCallback(generateTable);
+
+  			function generateTable(){
+  				createMeetingList(createMeetingArray(createMeetingQuery()));
+  			}
+		</script>
 	</head>
 
 	<body>
@@ -39,6 +50,7 @@
 			</div>
 		</div>
 		
+		<div id="myPieChart" />
 
 		<!-- footable initialization -->
 		<script type="text/javascript">
@@ -49,10 +61,10 @@
 		// 1.) creates query
 		// 2.) creates meeting array from query
 		// 3. ) creates meeting list from meeting array
-		-->
+		
 		<script>
 			createMeetingList(createMeetingArray(createMeetingQuery()));
-		</script>
+		</script>-->
 
 		<!-- table for testing
 		<table class="pure-table pure-table-bordered footable table sml_table">
