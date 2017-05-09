@@ -28,7 +28,7 @@
   			google.charts.setOnLoadCallback(generateTable);
 
   			function generateTable(){
-  				createMeetingQuery();
+				createMeetingQuery();
   			}
 		</script>
 	</head>
@@ -49,44 +49,5 @@
 
 			</div>
 		</div>
-		
-		<div id="myPieChart" />
-
-		<!-- footable initialization -->
-		<script type="text/javascript">
-			$(function () {$('.footable').footable({addRowToggle: false}); });
-		</script>
-
-		<!--
-		// 1.) creates query
-		// 2.) creates meeting array from query
-		// 3. ) creates meeting list from meeting array
-		
-		<script>
-			createMeetingList(createMeetingArray(createMeetingQuery()));
-		</script>-->
-
-		<!-- table for testing
-		<table class="pure-table pure-table-bordered footable table sml_table">
-			<thead>
-				<tr>
-				<th class="oc" data-sort-ignore="true">Day</th><th data-sort-initial="true" data-type="numeric">Time</th><th class="oc" data-hide="tablet, phone">O/C</th><th>Name</th><th data-hide="tablet, phone" data-sort-ignore="true">Address</th><th>City</th><th data-hide="all" data-sort-ignore="true">Notes</th>
-				</tr>
-			</thead>
-			<tbody id="test">
-			</tbody>
-		</table>-->
-		
-		<!-- Test for Meeting Class
-		<script>
-		var meeting1 = new Meeting("6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Tacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
-		$("#test").append(meeting1.toTableRow("Mon"));
-		var meeting2 = new Meeting("7:30 PM", "1930", true, "South Star", "2710 N Madison St", "Pacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
-		$("#test").append(meeting2.toTableRow("Mon"));
-		var meeting3 = new Meeting("8:30 PM", "2030", true, "East Star", "2710 N Madison St", "Wacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
-		$("#test").append(meeting3.toTableRow("Mon"));
-		var meeting4 = new Meeting("9:30 PM", "2130", true, "West Star", "2710 N Madison St", "Nacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
-		$("#test").append(meeting4.toTableRow("Mon"));
-		</script>-->
 	</body>
 </html>
