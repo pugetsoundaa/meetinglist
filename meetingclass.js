@@ -36,7 +36,7 @@ class Meeting{
 		
 		// sets the character to print out for Open or Closed
 		let open_char = "C";
-		if(this.open){
+		if(this.open == 1){
 			open_char = 'O';
 		}
 		
@@ -48,8 +48,8 @@ class Meeting{
 		
 		// adds the last update date at the end of the meeting notes
 		let newnotes;
-		if (this.notes == "") {
-			newnotes = this.notes+"Info Last Updated: "+this.lupdate;
+		if (this.notes == null) {
+			newnotes = "Info Last Updated: "+this.lupdate;
 		}
 		else {
 			newnotes = this.notes+"; Info Last Updated: "+this.lupdate;	
