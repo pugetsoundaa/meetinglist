@@ -1,9 +1,10 @@
 // Create Meeting Array Function and Helper Functions
 
-function createMeetingArray(queryWhole){
+function createMeetingArray(meetingDataTable){
 
-	
-	return [[],[],[],[],[],[],[]];
+	console.log(meetingDataTable.getValue(0,1));
+	let arrayOfMeetingArrays = [[],[],[],[],[],[],[]];
+	createMeetingList(arrayOfMeetingArrays);
 
 	/* For testing createMeetingList
 	let meeting1 = new Meeting("6:30 PM", "1830", true, "North Star", "2710 N Madison St", "Tacoma", "98407", "Mason United Methodist Church, upstairs lobby", "2/18/17", false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false);
@@ -26,3 +27,5 @@ function createMeetingArray(queryWhole){
 function createMeetingObject(meetingArray){
 	return "";
 }
+
+
