@@ -2,14 +2,14 @@
 
 function createMeetingQuery(){
 	// sets the initial search query to the Google Sheet address
-	let searchQuery = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing/gviz/tq?tq=";
+	let searchQuery = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing/gviz/tq?tq=select%20where";
 	
 	// creates a global variable to store a dictionary of the booleans after processing the URL query string
 	smlURLparameters = processURLQueryString();
 
 	// adds any selections to the search query
 	searchQuery = searchQuery + addSelections();
-
+	console.log(searchQuery);
 	// creates the Query object and sends the QueryResponse object to processQuery function 
 	let searchQueryObject = new google.visualization.Query(searchQuery);
 	searchQueryObject.send(processQuery);
@@ -72,7 +72,48 @@ function processURLQueryString(){
 }
 
 function addSelections(){
-	return "";
+	if(smlURLparameters.SUN){
+		return "%20J%20%3D%201";
+	}
+	if(smlURLparameters.MON){
+		return "";
+	}
+	if(smlURLparameters.TUE){
+		return "";
+	}
+	if(smlURLparameters.WED){
+		return "";
+	}
+	if(smlURLparameters.THU){
+		return "";
+	}
+	if(smlURLparameters.FRI){
+		return "";
+	}
+	if(smlURLparameters.SAT){
+		return "";
+	}
+	if(smlURLparameters.M){
+		return "";
+	}
+	if(smlURLparameters.W){
+		return "";
+	}
+	if(smlURLparameters.H){
+		return "";
+	}
+	if(smlURLparameters.G){
+		return "";
+	}
+	if(smlURLparameters.KF){
+		return "";
+	}
+	if(smlURLparameters.SI){
+		return "";
+	}
+	if(smlURLparameters.AL){
+		return "";
+	}
 }
 
 // helper function to get URL Parameter from https://gist.github.com/varemenos/2531765
