@@ -1,7 +1,6 @@
 // Create Meeting Array Function and Helper Functions
 
 function createMeetingArray(meetingDT){
-
 	// creates an array of 7 arrays of the indexes of meetings for each day of the week
 	let arrayOfRowIndex = new Array(7);
 	for(let i = 0; i < 7; i++){
