@@ -52,6 +52,9 @@ function processURLQueryString(){
 	if(getUrlVar("women")==1){
 		URLparameters.W = true;
 	}
+	if(getUrlVar("handi")==1){
+		URLparameters.H = true;
+	}
 	if(getUrlVar("lgbt")==1){
 		URLparameters.G = true;
 	}
