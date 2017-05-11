@@ -2,16 +2,17 @@
 
 function createMeetingQuery(){
 	// sets the initial search query to the Google Sheet address
-	let searchQuery = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing/gviz/tq?tq=select%20where";
+	let googleSheetURL = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing";
 	
 	// creates a global variable to store a dictionary of the booleans after processing the URL query string
 	smlURLparameters = processURLQueryString();
 
-	// adds any selections to the search query
-	searchQuery = searchQuery + addSelections();
-	console.log(searchQuery);
+	// creates the search query
+	let searchQuery = addSelections();
+
 	// creates the Query object and sends the QueryResponse object to processQuery function 
-	let searchQueryObject = new google.visualization.Query(searchQuery);
+	let searchQueryObject = new google.visualization.Query(googleSheetURL);
+	searchQueryObject.setQuery(searchQuery);
 	searchQueryObject.send(processQuery);
 }
 
@@ -22,7 +23,7 @@ function processQuery(queryResponse){
 
 function processURLQueryString(){
 	// creates dictionary with all initially set to false
-	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, M: false, W: false, H: false, G: false, KF: false, SI: false, AL: false};
+	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, M: false, W: false, H: false, G: false, S: false, KF: false, SI: false, AL: false};
 	
 	//uses the getUrlVar function to see if any of the URL parameters are set to one and if so updates associated dictionary key value to true 
 	if(getUrlVar("sunday")==1){
@@ -58,6 +59,9 @@ function processURLQueryString(){
 	if(getUrlVar("lgbt")==1){
 		URLparameters.G = true;
 	}
+	if(getUrlVar("spanish")==1){
+		URLparameters.S = true;
+	}
 	if(getUrlVar("kid")==1){
 		URLparameters.KF = true;
 	}
@@ -73,46 +77,49 @@ function processURLQueryString(){
 
 function addSelections(){
 	if(smlURLparameters.SUN){
-		return "%20J%20%3D%201";
+		return "where J = 1";
 	}
 	if(smlURLparameters.MON){
-		return "";
+		return "where K = 1";
 	}
 	if(smlURLparameters.TUE){
-		return "";
+		return "where L = 1";
 	}
 	if(smlURLparameters.WED){
-		return "";
+		return "where M = 1";
 	}
 	if(smlURLparameters.THU){
-		return "";
+		return "where N = 1";
 	}
 	if(smlURLparameters.FRI){
-		return "";
+		return "where O = 1";
 	}
 	if(smlURLparameters.SAT){
-		return "";
+		return "where P = 1";
 	}
 	if(smlURLparameters.M){
-		return "";
+		return "where Q = 1";
 	}
 	if(smlURLparameters.W){
-		return "";
+		return "where R = 1";
 	}
 	if(smlURLparameters.H){
-		return "";
+		return "where S = 1";
 	}
 	if(smlURLparameters.G){
-		return "";
+		return "where T = 1";
+	}
+	if(smlURLparameters.S){
+		return "where U = 1";
 	}
 	if(smlURLparameters.KF){
-		return "";
+		return "where V = 1";
 	}
 	if(smlURLparameters.SI){
-		return "";
+		return "where (W = 1 or X = 1)";
 	}
 	if(smlURLparameters.AL){
-		return "";
+		return "where Y = 1";
 	}
 }
 
