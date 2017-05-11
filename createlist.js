@@ -21,14 +21,180 @@ function createMeetingList(meetingArray){
 			$("#sml_table").append(appendString);
 		}
 	}
+
+	// appends the number of meetings found next to the title description
+	$('#mtgnum').append("["+meetingcount+" Found]");
 	
 	// calls a function to change the title description based on the search parameters
-	//updateTitleDescription();
+	updateTitleDescription();
 	
 	// footable initialization
 	$(function () {$('.footable').footable({addRowToggle: false}); });
 }
 
 function updateTitleDescription(){
+	let searchterms = 0;
+	let titlestring = "";
+	let subtitlestring = "";
 
+	if(smlURLparameters.SUN){
+		titlestring = "Sunday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Sunday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Sunday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.MON){
+		titlestring = "Monday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Monday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Monday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.TUE){
+		titlestring = "Tuesday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Tuesday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Tuesday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.WED){
+		titlestring = "Wednesday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Wednesday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Wednesday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.THU){
+		titlestring = "Thursday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Thursday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Thursday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.FRI){
+		titlestring = "Friday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Friday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Friday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.SAT){
+		titlestring = "Saturday Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Saturday";
+		}
+		else {
+			subtitlestring = subtitlestring+"Saturday";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.M){
+		titlestring = "Men\'s Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Men Only";
+		}
+		else {
+			subtitlestring = subtitlestring+"Men Only";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.W){
+		titlestring = "Women\'s Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Women Only";
+		}
+		else {
+			subtitlestring = subtitlestring+"Women Only";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.H){
+		titlestring = "Handicap Accesible Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Handicap Accesible";
+		}
+		else {
+			subtitlestring = subtitlestring+"Handicap Accesible";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.G){
+		titlestring = "LGBTQI Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", LGBTQI";
+		}
+		else {
+			subtitlestring = subtitlestring+"LGBTQI";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.S){
+		titlestring = "Spanish Speaking Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Spanish Speaking";
+		}
+		else {
+			subtitlestring = subtitlestring+"Spanish Speaking";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.KF){
+		titlestring = "Kid Friendly Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Kid Friendly";
+		}
+		else {
+			subtitlestring = subtitlestring+"Kid Friendly";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.SI){
+		titlestring = "Sign Language Interpreter Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Sign Language Interpreter";
+		}
+		else {
+			subtitlestring = subtitlestring+"Sign Language Interpreter";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.AL){
+		titlestring = "Alanon Concurrent Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Alanon Concurrent";
+		}
+		else {
+			subtitlestring = subtitlestring+"Alanon Concurrent";
+		}
+		searchterms++;
+	}
+
+	// if there is only one search term then just change the title
+	if (searchterms == 1){
+		$('#titdes').replaceWith("<span id=\"titdes\">"+titlestring+"</span>");
+	}
+	// if there is more than one search term then change title to custom and insert subtitle
+	else if (searchterms > 1){
+		$('#titdes').replaceWith("<span id=\"+titdes\">Custom Search Meetings</span>");
+		$('#subtitdes').append("<b>Parameters:</b>&nbsp;&nbsp;&nbsp;&nbsp;"+subtitlestring);
+	}
 }

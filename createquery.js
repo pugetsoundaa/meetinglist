@@ -9,7 +9,7 @@ function createMeetingQuery(){
 
 	// creates the search query
 	let searchQuery = addSelections();
-	console.log(searchQuery);
+
 	// creates the Query object and sends the QueryResponse object to processQuery function 
 	let searchQueryObject = new google.visualization.Query(googleSheetURL);
 	searchQueryObject.setQuery(searchQuery);
@@ -77,6 +77,7 @@ function processURLQueryString(){
 }
 
 function addSelections(){
+	//will need to change to adding onto a string and returning at end for custom search
 	if(smlURLparameters.SUN){
 		return "where J = 1";
 	}
