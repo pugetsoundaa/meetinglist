@@ -9,7 +9,7 @@ function createMeetingQuery(){
 
 	// creates the search query
 	let searchQuery = addSelections();
-
+	console.log(searchQuery);
 	// creates the Query object and sends the QueryResponse object to processQuery function 
 	let searchQueryObject = new google.visualization.Query(googleSheetURL);
 	searchQueryObject.setQuery(searchQuery);
@@ -50,7 +50,7 @@ function processURLQueryString(){
 	if(getUrlVar("men")==1){
 		URLparameters.M = true;
 	}
-	if(getUrlVar("women")==1){
+	if(getUrlVar("woman")==1){
 		URLparameters.W = true;
 	}
 	if(getUrlVar("handi")==1){
