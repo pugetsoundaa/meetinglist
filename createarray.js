@@ -13,6 +13,31 @@ function createMeetingArray(meetingDT){
 		arrayOfMeetingArrays[i] = createDayMeetingObjectArray(meetingDT, arrayOfRowIndex[i]);
 	}
 
+	// if any day(s) of the week are specified in the query, sets non selected days to empty arrays
+	if(smlURLparameters.SUN || smlURLparameters.MON || smlURLparameters.TUE || smlURLparameters.WED || smlURLparameters.THU || smlURLparameters.FRI || smlURLparameters.SAT){
+		if(!smlURLparameters.SUN){
+			arrayOfMeetingArrays[0] = [];
+		}
+		if(!smlURLparameters.MON){
+			arrayOfMeetingArrays[1] = [];
+		}
+		if(!smlURLparameters.TUE){
+			arrayOfMeetingArrays[2] = [];
+		}
+		if(!smlURLparameters.WED){
+			arrayOfMeetingArrays[3] = [];
+		}
+		if(!smlURLparameters.THU){
+			arrayOfMeetingArrays[4] = [];
+		}
+		if(!smlURLparameters.FRI){
+			arrayOfMeetingArrays[5] = [];
+		}
+		if(!smlURLparameters.SAT){
+			arrayOfMeetingArrays[6] = [];
+		}
+	}
+
 	createMeetingList(arrayOfMeetingArrays);
 }
 

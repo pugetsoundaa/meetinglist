@@ -50,6 +50,7 @@ function processURLQueryString(){
 	if(getUrlVar("men")==1){
 		URLparameters.M = true;
 	}
+	// had to use woman instead of women as women triggered men as well do to word overlap
 	if(getUrlVar("woman")==1){
 		URLparameters.W = true;
 	}
@@ -121,6 +122,8 @@ function addSelections(){
 	if(smlURLparameters.AL){
 		return "where Y = 1";
 	}
+
+	return "";
 }
 
 // helper function to get URL Parameter from https://gist.github.com/varemenos/2531765
