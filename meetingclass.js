@@ -41,7 +41,7 @@ class Meeting{
 		}
 		
 		// adds the meeting codes to the end of the meeting name
-		let newmname = Meeting.addToName(this.mname);
+		let newmname = Meeting.addToName(this.mname, this);
 
 		// combines address pieces together to create a whole address
 		let wholeaddress = this.address+", "+this.city+" WA "+this.zipcode;
@@ -69,7 +69,82 @@ class Meeting{
 		return htmlstring;
 	}
 
-	static addToName(mname){
-		return mname;
+	static addToName(mname, meeting){
+		let tempname = mname+" (";
+		let changes = 0;
+
+		if(meeting.mens==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"M";
+			changes++;
+		}
+		if(meeting.womens==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"W";
+			changes++;
+		}
+		if(meeting.handi==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"H";
+			changes++;
+		}
+		if(meeting.lgbtq==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"G";
+			changes++;
+		}
+		if(meeting.spanish==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"S";
+			changes++;
+		}
+		if(meeting.kid==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"KF";
+			changes++;
+		}
+		if(meeting.si==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"SI";
+			changes++;
+		}
+		if(meeting.vsi==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"VSI";
+			changes++;
+		}
+		if(meeting.alanon==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"@";
+			changes++;
+		}
+
+		tempname = tempname+")";
+
+		if(changes > 0){
+			return tempname;
+		}
+		else{
+			return mname;
+		}
+		
 	}
 }
