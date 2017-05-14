@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>12sml_v2 Custom Search</title>
+        
+        <!--dependencies
+        <script src="jquery_1_9_1.min.js"></script>
+        <script src="footable.js"></script>
+        <script src="footable.sort.js"></script>
+        <link rel="stylesheet" type="text/css" href="footable.core.min.css">-->
+        <link rel="stylesheet" type="text/css" href="pure_forms_0_6_0.min.css"><!--
+        <link rel="stylesheet" type="text/css" href="pure_tables_0_6_0.min.css">-->
+        
+        <!--12sml_v2 CSS -->
+        <link rel="stylesheet" type="text/css" href="style.css"><!--
+        <link rel="stylesheet" type="text/css" media="print" href="printstyle.css">-->
+        
+        <!--12sml_v2 JS
+        <script src="meetingclass.js"></script>
+        <script src="createquery.js"></script>
+        <script src="createarray.js"></script>
+        <script src="createlist.js"></script>-->
+
+        <!-- Google Chart JS
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {packages: ['corechart']});
+            google.charts.setOnLoadCallback(generateTable);
+
+            function generateTable(){
+                createMeetingQuery();
+            }
+        </script>-->
+    </head>
+
+    <body>
+         <div id="sml_customsearch">
+            <h2>Perform a Custom Search</h2>
+            <p id="searchmsg"><em>Use one or more of the following options to find specific meetings.</em></p>
+        
+            <!--the search form, sends to meeting-list page via GET-->
+            <form class="pure-form" id="customsearchform" action="index.html" method="get">
+                <!--name text box-->
+                <label for="Name" class="pure-checkbox"><h3>Name Must Contain:
+                    <input type="text" id="Name" name="name" value=""></h3>
+                </label>
+                <!--city text box-->
+                <label for="City" class="pure-checkbox"><h3>City Must Equal:
+                    <input type="text" id="City" name="city" value=""></h3>
+                </label>
+                <!--zipcode text box-->
+                <label for="Zipcode" class="pure-checkbox"><h3>Zipcode Must Equal:
+                    <input type="text" id="Zipcode" name="zipcode" value=""></h3>
+                </label>
+            <!--meeting code check boxes-->
+                <h3>Must Have These Codes:</h3>
+                <label for="Open" class="pure-checkbox search_checkbox">
+                    <input name="open" id="Open" type="checkbox" value="1">
+                    Open (O)
+                </label>
+                <label for="Closed" class="pure-checkbox search_checkbox">
+                    <input name="closed" id="Closed" type="checkbox" value="1">
+                    Closed (C)
+                </label>
+                <label for="Mens" class="pure-checkbox search_checkbox">
+                    <input name="men" id="Mens" type="checkbox" value="1">
+                    Men Only (M)
+                </label>
+                <label for="Womens" class="pure-checkbox search_checkbox">
+                    <input name="woman" id="Womens" type="checkbox" value="1">
+                    Women Only (W)
+                </label>
+                <label for="Spanish" class="pure-checkbox search_checkbox">
+                    <input name="spanish" id="Spanish" type="checkbox" value="1">
+                    Spanish Speaking (S)
+                </label>
+                <label for="LGBTQ" class="pure-checkbox search_checkbox">
+                    <input name="lgbt" id="LGBTQ" type="checkbox" value="1">
+                    LGBTQI (G)
+                </label>
+                <label for="Handi" class="pure-checkbox search_checkbox">
+                    <input name="handi" id="Handi" type="checkbox" value="1">
+                    Handicap Accessible (H)
+                </label>
+                <label for="Kid" class="pure-checkbox search_checkbox">
+                    <input name="kid" id="Kid" type="checkbox" value="1">
+                    Kid Friendly (KF)
+                </label>
+                <label for="SI" class="pure-checkbox search_checkbox">
+                    <input name="asl" id="SI" type="checkbox" value="1">
+                    Sign Language Interpreter (SI or VSI)
+                </label>
+                <label for="Alanon" class="pure-checkbox search_checkbox">
+                    <input name="alanon" id="Alanon" type="checkbox" value="1">
+                    Alanon Concurrent (@)
+                </label>
+                <!--days of the week check boxes-->
+                <h3>And Be On Any Of These Days (Can Leave Unchecked For All Days):</h3>
+                <label for="Sunday" class="pure-checkbox search_checkbox">
+                    <input name="sunday" id="Sunday" type="checkbox" value="1">
+                    Sunday
+                </label>
+                <label for="Monday" class="pure-checkbox search_checkbox">
+                    <input name="monday" id="Monday" type="checkbox" value="1">
+                    Monday
+                </label>
+                <label for="Tuesday" class="pure-checkbox search_checkbox">
+                    <input name="tuesday" id="Tuesday" type="checkbox" value="1">
+                    Tuesday
+                </label>
+                <label for="Wednesday" class="pure-checkbox search_checkbox">
+                    <input name="wednesday" id="Wednesday" type="checkbox" value="1">
+                    Wednesday
+                </label>
+                <label for="Thursday" class="pure-checkbox search_checkbox">
+                    <input name="thursday" id="Thursday" type="checkbox" value="1">
+                    Thursday
+                </label>
+                <label for="Friday" class="pure-checkbox search_checkbox">
+                    <input name="friday" id="Friday" type="checkbox" value="1">
+                    Friday
+                </label>
+                <label for="Saturday" class="pure-checkbox search_checkbox">
+                    <input name="saturday" id="Saturday" type="checkbox" value="1">
+                    Saturday
+                </label>->
+                <!--submit button-->
+                <br>
+                <input id="searchsubmit" type="submit" value="Perform Search">
+            </form>
+        </div>
+    </body>
+</html>
