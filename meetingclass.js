@@ -59,10 +59,8 @@ class Meeting{
 		let htmlstring = "<tr><td class=\"oc\">"+day+"</td>"; // day, input as parameter
 		htmlstring = htmlstring+"<td data-value=\""+this.stime_num+"\">"+this.stime+"</td>"; // String start time with numeric data-value for sorting
 		htmlstring = htmlstring+"<td class=\"oc\">"+open_char+"</td><td>"+newmname+"</td>"; // O or C and New Name
-		
-		// street name and number but link to apple maps of whole address
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
-		htmlstring = htmlstring+"<td><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+"</a></td>";
+		htmlstring = htmlstring+"<td><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+wholeaddress+"</a></td>";
 		htmlstring = htmlstring+"<td>"+this.city+"</td>"; // city
 		htmlstring = htmlstring+"<td>"+newnotes+"</td></tr>"; // notes
 		

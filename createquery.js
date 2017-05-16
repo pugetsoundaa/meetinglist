@@ -23,7 +23,7 @@ function processQuery(queryResponse){
 
 function processURLQueryString(){
 	// creates dictionary with all initially set to false
-	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, M: false, W: false, H: false, G: false, S: false, KF: false, SI: false, AL: false};
+	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, M: false, W: false, H: false, G: false, S: false, KF: false, SI: false, AL: false, O: false, C: false};
 	
 	//uses the getUrlVar function to see if any of the URL parameters are set to one and if so updates associated dictionary key value to true 
 	if(getUrlVar("sunday")==1){
@@ -72,59 +72,136 @@ function processURLQueryString(){
 	if(getUrlVar("alanon")==1){
 		URLparameters.AL = true;
 	}
+	if(getUrlVar("open")==1){
+		URLparameters.O = true;
+	}
+	if(getUrlVar("closed")==1){
+		URLparameters.C = true;
+	}
 
 	return URLparameters;
 }
 
 function addSelections(){
-	//will need to change to adding onto a string and returning at end for custom search
-	if(smlURLparameters.SUN){
-		return "where J = 1";
+	let selections = "";
+	let count = 0;
+	
+	if(getUrlVar("name")!=""){
+		if(count > 0){
+			selections = selections + " and D contains \'"+getUrlVar("name")+"\'";
+		}
+		else{
+			selections = selections + "where D contains \'"+getUrlVar("name")+"\'";
+		}
 	}
-	if(smlURLparameters.MON){
-		return "where K = 1";
+	if(getUrlVar("city")!=""){
+		if(count > 0){
+			selections = selections + " and F = \'"+getUrlVar("city")+"\'";
+		}
+		else{
+			selections = selections + "where F = \'"+getUrlVar("city")+"\'";
+		}
 	}
-	if(smlURLparameters.TUE){
-		return "where L = 1";
-	}
-	if(smlURLparameters.WED){
-		return "where M = 1";
-	}
-	if(smlURLparameters.THU){
-		return "where N = 1";
-	}
-	if(smlURLparameters.FRI){
-		return "where O = 1";
-	}
-	if(smlURLparameters.SAT){
-		return "where P = 1";
+	if(getUrlVar("zipcode")!=""){
+		if(count > 0){
+			selections = selections + " and G = "+getUrlVar("zipcode");
+		}
+		else{
+			selections = selections + "where G = "+getUrlVar("zipcode");
+		}
 	}
 	if(smlURLparameters.M){
-		return "where Q = 1";
+		if(count > 0){
+			selections = selections + " and Q = 1"
+		}
+		else{
+			selections = selections + "where Q = 1";
+		}
+		count++;
 	}
 	if(smlURLparameters.W){
-		return "where R = 1";
+		if(count > 0){
+			selections = selections + " and R = 1"
+		}
+		else{
+			selections = selections + "where R = 1";
+		}
+		count++;
 	}
 	if(smlURLparameters.H){
-		return "where S = 1";
+		if(count > 0){
+			selections = selections + " and S = 1"
+		}
+		else{
+			selections = selections + "where S = 1";
+		}
+		count++;
 	}
 	if(smlURLparameters.G){
-		return "where T = 1";
+		if(count > 0){
+			selections = selections + " and T = 1"
+		}
+		else{
+			selections = selections + "where T = 1";
+		}
+		count++;
 	}
 	if(smlURLparameters.S){
-		return "where U = 1";
+		if(count > 0){
+			selections = selections + " and U = 1"
+		}
+		else{
+			selections = selections + "where U = 1";
+		}
+		count++;
 	}
 	if(smlURLparameters.KF){
-		return "where V = 1";
+		if(count > 0){
+			selections = selections + " and V = 1"
+		}
+		else{
+			selections = selections + "where V = 1";
+		}
+		count++;
 	}
 	if(smlURLparameters.SI){
-		return "where (W = 1 or X = 1)";
+		if(count > 0){
+			selections = selections + " and (W = 1 or X = 1)"
+		}
+		else{
+			selections = selections + "where (W = 1 or X = 1)";
+		}
+		count++;
 	}
 	if(smlURLparameters.AL){
-		return "where Y = 1";
+		if(count > 0){
+			selections = selections + " and Y = 1"
+		}
+		else{
+			selections = selections + "where Y = 1";
+		}
+		count++;
 	}
-
-	return "";
+	if(smlURLparameters.O){
+		if(count > 0){
+			selections = selections + " and C = 1"
+		}
+		else{
+			selections = selections + "where C = 1";
+		}
+		count++;
+	}
+	if(smlURLparameters.C){
+		if(count > 0){
+			selections = selections + " and C = 0"
+		}
+		else{
+			selections = selections + "where C = 0";
+		}
+		count++;
+	}
+	console.log(selections);
+	return selections;
 }
 
 // helper function to get URL Parameter from https://gist.github.com/varemenos/2531765
