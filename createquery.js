@@ -93,6 +93,7 @@ function addSelections(){
 		else{
 			selections = selections + "where D contains \'"+getUrlVar("name")+"\'";
 		}
+		count++;
 	}
 	if(getUrlVar("city")!=""){
 		if(count > 0){
@@ -101,6 +102,7 @@ function addSelections(){
 		else{
 			selections = selections + "where F = \'"+getUrlVar("city")+"\'";
 		}
+		count++;
 	}
 	if(getUrlVar("zipcode")!=""){
 		if(count > 0){
@@ -109,6 +111,7 @@ function addSelections(){
 		else{
 			selections = selections + "where G = "+getUrlVar("zipcode");
 		}
+		count++;
 	}
 	if(smlURLparameters.M){
 		if(count > 0){
