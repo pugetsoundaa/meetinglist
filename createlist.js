@@ -107,6 +107,56 @@ function updateTitleDescription(){
 		}
 		searchterms++;
 	}
+	if(getUrlVar("name")!=""){
+		titlestring = "Name Contains \""+getUrlVar("name")+"\" Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Name Contains \""+getUrlVar("name")+"\"";
+		}
+		else {
+			subtitlestring = subtitlestring+"Name Contains \""+getUrlVar("name")+"\"";
+		}
+		searchterms++;
+	}
+	if(getUrlVar("city")!=""){
+		titlestring = "City of "+getUrlVar("city")+" Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", City of "+getUrlVar("city");
+		}
+		else {
+			subtitlestring = subtitlestring+"City of "+getUrlVar("city");
+		}
+		searchterms++;
+	}
+	if(getUrlVar("zipcode")!=""){
+		titlestring = "Zipcode of "+getUrlVar("zipcode")+" Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Zipcode of "+getUrlVar("zipcode");
+		}
+		else {
+			subtitlestring = subtitlestring+"Zipcode of "+getUrlVar("zipcode");
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.O){
+		titlestring = "Open Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Open";
+		}
+		else {
+			subtitlestring = subtitlestring+"Open";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.C){
+		titlestring = "Closed Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Closed";
+		}
+		else {
+			subtitlestring = subtitlestring+"Closed";
+		}
+		searchterms++;
+	}
 	if(smlURLparameters.M){
 		titlestring = "Men\'s Meetings";
 		if(searchterms > 0){
