@@ -22,6 +22,11 @@ function createMeetingList(meetingArray){
 		}
 	}
 
+	// message in case there are no meetings matching the search parameters
+	if (meetingcount == 0) {
+		$("#sml_table").append("<p id=\"nomeetingmsg\"><em>No meetings found matching your search parameters. <a href=\"search.html\">Try a different search.</a></em></p>");	
+	}
+
 	// appends the number of meetings found next to the title description
 	$('#mtgnum').append("["+meetingcount+" Found]");
 	
@@ -108,22 +113,22 @@ function updateTitleDescription(){
 		searchterms++;
 	}
 	if(getUrlVar("name")!=""){
-		titlestring = "Name Contains \""+getUrlVar("name")+"\" Meetings";
+		titlestring = "Name Contains \""+decodeQS(getUrlVar("name"))+"\" Meetings";
 		if(searchterms > 0){
-			subtitlestring = subtitlestring+", Name Contains \""+getUrlVar("name")+"\"";
+			subtitlestring = subtitlestring+", Name Contains \""+decodeQS(getUrlVar("name"))+"\"";
 		}
 		else {
-			subtitlestring = subtitlestring+"Name Contains \""+getUrlVar("name")+"\"";
+			subtitlestring = subtitlestring+"Name Contains \""+decodeQS(getUrlVar("name"))+"\"";
 		}
 		searchterms++;
 	}
 	if(getUrlVar("city")!=""){
-		titlestring = "City of "+getUrlVar("city")+" Meetings";
+		titlestring = "City of "+decodeQS(getUrlVar("city"))+" Meetings";
 		if(searchterms > 0){
-			subtitlestring = subtitlestring+", City of "+getUrlVar("city");
+			subtitlestring = subtitlestring+", City of "+decodeQS(getUrlVar("city"));
 		}
 		else {
-			subtitlestring = subtitlestring+"City of "+getUrlVar("city");
+			subtitlestring = subtitlestring+"City of "+decodeQS(getUrlVar("city"));
 		}
 		searchterms++;
 	}

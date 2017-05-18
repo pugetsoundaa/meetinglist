@@ -88,19 +88,19 @@ function addSelections(){
 	
 	if(getUrlVar("name")!=""){
 		if(count > 0){
-			selections = selections + " and D contains \'"+getUrlVar("name")+"\'";
+			selections = selections + " and D contains \'"+decodeQS(getUrlVar("name"))+"\'";
 		}
 		else{
-			selections = selections + "where D contains \'"+getUrlVar("name")+"\'";
+			selections = selections + "where D contains \'"+decodeQS(getUrlVar("name"))+"\'";
 		}
 		count++;
 	}
 	if(getUrlVar("city")!=""){
 		if(count > 0){
-			selections = selections + " and F = \'"+getUrlVar("city")+"\'";
+			selections = selections + " and F = \'"+decodeQS(getUrlVar("city"))+"\'";
 		}
 		else{
-			selections = selections + "where F = \'"+getUrlVar("city")+"\'";
+			selections = selections + "where F = \'"+decodeQS(getUrlVar("city"))+"\'";
 		}
 		count++;
 	}
@@ -211,4 +211,11 @@ function addSelections(){
 function getUrlVar(key){
 	var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); 
 	return result && unescape(result[1]) || ""; 
+}
+
+// helper function to replace + signs in query string with space
+function decodeQS(qString){
+	qString = qString.replace(/\+/g, '%20');
+	qString = decodeURIComponent(qString);
+	return qString;
 }
