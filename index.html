@@ -49,17 +49,27 @@
 		</div>
         <script>
 			function prepForPrinting(){
-				// stores original classes
-				let temp = $('#sml_table').css('display');
-				console.log(temp);
+				// checks to see if the oc and address is hidden due to screen size
+				let temp = ($('#th_oc').css('display') == 'none');
+				
 				// preps meeting list so that O/C and Address are not hidden, and Notes are displayed
+				$('.col_notes').css('display', 'table-cell');
+				if(temp){
+					$('.col_oc').css('display', 'table-cell');
+					$('.col_address').css('display', 'table-cell');
+				}
 				
 				// print the window
 				window.print();
 				
 				// returns meeting list to original state
-				
+				$('.col_notes').css('display', 'none');
+				if(temp){
+					$('.col_oc').css('display', 'none');
+					$('.col_address').css('display', 'none');
+				}
 			}
 		</script>
+
 	</body>
 </html>

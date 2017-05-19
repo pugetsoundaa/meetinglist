@@ -56,13 +56,13 @@ class Meeting{
 		}
 		
 		// creates a String of the meeting info as an HTML table row and returns it
-		let htmlstring = "<tr><td class=\"oc\">"+day+"</td>"; // day, input as parameter
-		htmlstring = htmlstring+"<td data-value=\""+this.stime_num+"\">"+this.stime+"</td>"; // String start time with numeric data-value for sorting
-		htmlstring = htmlstring+"<td class=\"oc\">"+open_char+"</td><td>"+newmname+"</td>"; // O or C and New Name
+		let htmlstring = "<tr><td class=\"oc col_day\">"+day+"</td>"; // day, input as parameter
+		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+this.stime_num+"\">"+this.stime+"</td>"; // String start time with numeric data-value for sorting
+		htmlstring = htmlstring+"<td class=\"oc col_oc\">"+open_char+"</td><td class=\"col_name\">"+newmname+"</td>"; // O or C and New Name
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
-		htmlstring = htmlstring+"<td><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
-		htmlstring = htmlstring+"<td>"+this.city+"</td>"; // city
-		htmlstring = htmlstring+"<td>"+newnotes+"</td></tr>"; // notes
+		htmlstring = htmlstring+"<td class=\"col_address\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
+		htmlstring = htmlstring+"<td class=\"col_city\">"+this.city+"</td>"; // city
+		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td></tr>"; // notes
 		
 		return htmlstring;
 	}
