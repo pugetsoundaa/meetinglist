@@ -5,7 +5,7 @@
 /* main 12smc div */
 #sml_maindiv {
 	margin: 10px;
-	font-size: 1.1em;
+	font-size: 1.05em;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
@@ -18,7 +18,7 @@
 #sml_customsearch {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 10px;
-	font-size: 1.1em;
+	font-size: 1.05em;
 }
 
 .search_checkbox {
