@@ -1,24 +1,24 @@
 @charset "UTF-8";
 /* 12 Step Meeting List CSS */
 
-/* makes O/C column values align center */
-.oc {
-	text-align: center;	
-}
 
 /* main 12smc div */
 #sml_maindiv {
 	margin: 10px;
+	font-size: 1.1em;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 .sml_table {
 	width: 100%;	
 }
 
-
 /* search stuff */
 #sml_customsearch {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 10px;
+	font-size: 1.1em;
 }
 
 .search_checkbox {
@@ -26,8 +26,14 @@
 	margin-right: 10px !important;
 }
 
-#searchsubmit {
+#searchsubmit_div {
+	text-align: center;
 	margin: 1.5em 1em 1em 1em;
+
+}
+
+#searchsubmit {
+	font-size: 125%;
 }
 
 /* Meeting Code */
@@ -44,11 +50,6 @@
         margin-bottom: 30px;
 }
 
-/* Hide Print Table */
-#invisibletable {
-	display: none;
-}
-
 /* Messages */
 #nomeetingmsg, #searchmsg {
 	font-size: 1.5em;
@@ -63,4 +64,9 @@
 	margin-top: 2px;
 	font-size: 1.25em;
 	margin-bottom: 25px;
+}
+
+/* makes O/C column values align center */
+.oc {
+	text-align: center;	
 }

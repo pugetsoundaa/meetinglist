@@ -3,34 +3,12 @@
     <head>
         <title>12sml_v2 Custom Search</title>
         
-        <!--dependencies
-        <script src="jquery_1_9_1.min.js"></script>
-        <script src="footable.js"></script>
-        <script src="footable.sort.js"></script>
-        <link rel="stylesheet" type="text/css" href="footable.core.min.css">-->
-        <link rel="stylesheet" type="text/css" href="pure_forms_0_6_0.min.css"><!--
-        <link rel="stylesheet" type="text/css" href="pure_tables_0_6_0.min.css">-->
+        <!--dependencies-->
+        <link rel="stylesheet" type="text/css" href="pure_forms_0_6_0.min.css">
+        <link rel="stylesheet" type="text/css" href="pure_buttons_0_6_2.min.css">
         
         <!--12sml_v2 CSS -->
-        <link rel="stylesheet" type="text/css" href="style.css"><!--
-        <link rel="stylesheet" type="text/css" media="print" href="printstyle.css">-->
-        
-        <!--12sml_v2 JS
-        <script src="meetingclass.js"></script>
-        <script src="createquery.js"></script>
-        <script src="createarray.js"></script>
-        <script src="createlist.js"></script>-->
-
-        <!-- Google Chart JS
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', {packages: ['corechart']});
-            google.charts.setOnLoadCallback(generateTable);
-
-            function generateTable(){
-                createMeetingQuery();
-            }
-        </script>-->
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
     <body>
@@ -126,7 +104,11 @@
                 </label>
                 <!--submit button-->
                 <br>
-                <input id="searchsubmit" type="submit" value="Perform Search">
+                <div id="searchsubmit_div">
+                    <button class="pure-button pure-button-primary" id="searchsubmit" type="submit">
+                        Perform Search
+                    </button>
+                </div>
             </form>
         </div>
     </body>

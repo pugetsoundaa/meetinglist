@@ -2,11 +2,6 @@
 /* CSS Document */
 
 /* hides everything that doesn't need to be printed out */
-#masthead, #printlink, .clickmsg, #visibletable {
+#printlink, .clickmsg {
 	display: none;
-}
-
-/* unhides the invisible table with all table columns unhidden for pritning */
-#invisibletable {
-	display: block;	
 }
