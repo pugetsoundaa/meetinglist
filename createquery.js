@@ -187,19 +187,19 @@ function addSelections(){
 	}
 	if(smlURLparameters.O){
 		if(count > 0){
-			selections = selections + " and C = 1"
+			selections = selections + " and D = 1"
 		}
 		else{
-			selections = selections + "where C = 1";
+			selections = selections + "where D = 1";
 		}
 		count++;
 	}
 	if(smlURLparameters.C){
 		if(count > 0){
-			selections = selections + " and C = 0"
+			selections = selections + " and D = 0"
 		}
 		else{
-			selections = selections + "where C = 0";
+			selections = selections + "where D = 0";
 		}
 		count++;
 	}
