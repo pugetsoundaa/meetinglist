@@ -5,9 +5,21 @@
 /* main 12smc div */
 #sml_maindiv {
 	margin: 10px;
-	font-size: 1.5em;
+	font-size: 1.1em;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+}
+
+@media only screen and (max-width: 768px) {
+  #sml_maindiv {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #sml_maindiv {
+    font-size: 1.5em;
+  }
 }
 
 .sml_table {
