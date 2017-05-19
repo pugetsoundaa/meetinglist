@@ -88,10 +88,10 @@ function addSelections(){
 	
 	if(getUrlVar("name")!=""){
 		if(count > 0){
-			selections = selections + " and D contains \'"+decodeQS(getUrlVar("name"))+"\'";
+			selections = selections + " and A contains \'"+decodeQS(getUrlVar("name"))+"\'";
 		}
 		else{
-			selections = selections + "where D contains \'"+decodeQS(getUrlVar("name"))+"\'";
+			selections = selections + "where A contains \'"+decodeQS(getUrlVar("name"))+"\'";
 		}
 		count++;
 	}
