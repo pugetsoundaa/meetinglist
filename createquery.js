@@ -203,7 +203,7 @@ function addSelections(){
 		}
 		count++;
 	}
-	console.log(selections);
+	
 	return selections;
 }
 
@@ -217,5 +217,11 @@ function getUrlVar(key){
 function decodeQS(qString){
 	qString = qString.replace(/\+/g, '%20');
 	qString = decodeURIComponent(qString);
-	return qString;
+	return toTitleCase(qString);
+}
+
+// helper function to capitalize the first letter of every word in a string
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
