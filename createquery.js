@@ -23,7 +23,7 @@ function processQuery(queryResponse){
 
 function processURLQueryString(){
 	// creates dictionary with all initially set to false
-	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, M: false, W: false, H: false, G: false, S: false, KF: false, SI: false, AL: false, O: false, C: false};
+	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, O: false, C: false, M: false, W: false, H: false, G: false, S: false, KF: false, SI: false, AL: false, YP: false, SM: false};
 	
 	//uses the getUrlVar function to see if any of the URL parameters are set to one and if so updates associated dictionary key value to true 
 	if(getUrlVar("sunday")==1){
@@ -46,6 +46,12 @@ function processURLQueryString(){
 	}
 	if(getUrlVar("saturday")==1){
 		URLparameters.SAT = true;
+	}
+	if(getUrlVar("open")==1){
+		URLparameters.O = true;
+	}
+	if(getUrlVar("closed")==1){
+		URLparameters.C = true;
 	}
 	if(getUrlVar("men")==1){
 		URLparameters.M = true;
@@ -72,12 +78,13 @@ function processURLQueryString(){
 	if(getUrlVar("alanon")==1){
 		URLparameters.AL = true;
 	}
-	if(getUrlVar("open")==1){
-		URLparameters.O = true;
+	if(getUrlVar("young")==1){
+		URLparameters.YP = true;
 	}
-	if(getUrlVar("closed")==1){
-		URLparameters.C = true;
+	if(getUrlVar("speaker")==1){
+		URLparameters.SM = true;
 	}
+
 
 	return URLparameters;
 }
@@ -110,6 +117,24 @@ function addSelections(){
 		}
 		else{
 			selections = selections + "where G = "+getUrlVar("zipcode");
+		}
+		count++;
+	}
+	if(smlURLparameters.O){
+		if(count > 0){
+			selections = selections + " and D = 1"
+		}
+		else{
+			selections = selections + "where D = 1";
+		}
+		count++;
+	}
+	if(smlURLparameters.C){
+		if(count > 0){
+			selections = selections + " and D = 0"
+		}
+		else{
+			selections = selections + "where D = 0";
 		}
 		count++;
 	}
@@ -185,24 +210,25 @@ function addSelections(){
 		}
 		count++;
 	}
-	if(smlURLparameters.O){
+	if(smlURLparameters.YP){
 		if(count > 0){
-			selections = selections + " and D = 1"
+			selections = selections + " and Z = 1"
 		}
 		else{
-			selections = selections + "where D = 1";
+			selections = selections + "where Z = 1";
 		}
 		count++;
 	}
-	if(smlURLparameters.C){
+	if(smlURLparameters.SM){
 		if(count > 0){
-			selections = selections + " and D = 0"
+			selections = selections + " and AA = 1"
 		}
 		else{
-			selections = selections + "where D = 0";
+			selections = selections + "where AA = 1";
 		}
 		count++;
 	}
+
 	
 	return selections;
 }

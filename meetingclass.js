@@ -3,7 +3,7 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_mname, in_stime, in_stime_num, in_open, in_address, in_city, in_zipcode, in_notes, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_vsi, in_alanon){
+	constructor(in_mname, in_stime, in_stime_num, in_open, in_address, in_city, in_zipcode, in_notes, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_vsi, in_alanon, in_young, in_speaker){
 		this.mname = in_mname;
 		this.stime = in_stime;
 		this.stime_num = in_stime_num;
@@ -29,6 +29,8 @@ class Meeting{
 		this.si = in_si;
 		this.vsi = in_vsi;
 		this.alanon = in_alanon;
+		this.young = in_young;
+		this.speaker = in_speaker;
 	}
 
 	// function to display a meeting object as an HTML table row
@@ -132,6 +134,20 @@ class Meeting{
 				tempname = tempname+", ";
 			}
 			tempname = tempname+"@";
+			changes++;
+		}
+		if(meeting.young==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"YP";
+			changes++;
+		}
+		if(meeting.speaker==1){
+			if(changes > 0){
+				tempname = tempname+", ";
+			}
+			tempname = tempname+"SM";
 			changes++;
 		}
 

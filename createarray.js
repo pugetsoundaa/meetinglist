@@ -72,9 +72,11 @@ function createDayMeetingObjectArray(meetingDT, rowIndexOfDay){
 		let si = meetingDT.getValue(index,22);
 		let vsi = meetingDT.getValue(index,23);
 		let alanon = meetingDT.getValue(index,24);
+		let young = meetingDT.getValue(index,25);
+		let speaker = meetingDT.getValue(index,26);
 		
 		// call the meeting object constructor
-		let meeting = new Meeting(name, stime, stime_num, open, address, city, zipcode, notes, lupdate, sunday, monday, tuesday, wednesday, thursday, friday, satruday, mens, womens, handi, lgbtq, spanish, kid, si, vsi, alanon);	
+		let meeting = new Meeting(name, stime, stime_num, open, address, city, zipcode, notes, lupdate, sunday, monday, tuesday, wednesday, thursday, friday, satruday, mens, womens, handi, lgbtq, spanish, kid, si, vsi, alanon, young, speaker);	
 		arrayOfMeetingObjects[i] = meeting;
 	}
 	return arrayOfMeetingObjects;

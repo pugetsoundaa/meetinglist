@@ -242,6 +242,26 @@ function updateTitleDescription(){
 		}
 		searchterms++;
 	}
+	if(smlURLparameters.YP){
+		titlestring = "Young People Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Young People";
+		}
+		else {
+			subtitlestring = subtitlestring+"Young People";
+		}
+		searchterms++;
+	}
+	if(smlURLparameters.SM){
+		titlestring = "Speaker Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Speaker Meeting";
+		}
+		else {
+			subtitlestring = subtitlestring+"Speaker Meeting";
+		}
+		searchterms++;
+	}
 
 	// if there is only one search term then just change the title
 	if (searchterms == 1){
