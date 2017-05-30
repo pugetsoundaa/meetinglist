@@ -2,14 +2,6 @@
 
 ## A JavaScript implementation of the 12sml [12 Step Meeting List] web application using a Google Sheet as the data source.
 
+## See mathteacher/12sml_v2 repository for the original project repository
 
-## See www.piercecountyaa.org for an example
-
-## Places that need updating when adding a new meeting code:
-### meeting list Google Sheet
-### meetingclass.js - constructor parameters, constructor body, addToName()
-### createquery.js - urlParameter dictionary, if getUrlVar statements, addSelections()
-### createarray.js - createDayMeetingObjectArray main loop, call to MeetingList constructor
-### createlist.js - updateTitleDescription()
-### index.html - code key
-### search.html - form code check boxes
+## This repository is a customization of 12sml_v2 for use by www.piercecountyaa.org 
