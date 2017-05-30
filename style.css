@@ -71,3 +71,20 @@
 .oc {
 	text-align: center;	
 }
+
+#titlediv {
+	display: table;
+}
+
+#titlediv_img, #titlediv_text {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width: 450px)  {
+	#titlediv_img, #titlediv_text {
+		display: block;
+		text-align: center;
+	}
+}
+
