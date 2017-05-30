@@ -11,7 +11,7 @@
 }
 
 @media only screen and (max-width: 450px)  {
-	#sml_maindiv, #sml_customsearch {
+	#sml_customsearch, #sml_tableheading{
 		font-size: 1.25em;
 	}
 }
