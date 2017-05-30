@@ -35,14 +35,15 @@
 	<body>
 		<!-- main meeting list div-->
 		<div id="sml_maindiv">
+			<div id="sml_tableheading">
+				<!-- table heading -->
+				<h2 id="titlepar"><span id="titdes">Meetings</span> <span id="mtgnum"></span></h2>
+				<p id="subtitlepar"><span id="subtitdes"></span></p>
+				<h3 id="printlink"><a href="javascript:prepForPrinting()">Print This Meeting List</a></h3>
+				<p class="codekey">O = Open Meeting, C = Closed Meeting, M = Men's Meeting, W = Women's Meeting, H = Handicap Accessible, G = LGBTQI, S = Spanish Speaking, KF = Kid Friendly, SI = Sign Language Interpreter, VSI = Volunteer SI (To Arrange Call CSO Accessibilities at 253-474-8897), @ = Alanon Meeting Runs Concurrently, YP = Young People, SM = Speaker Meeting</p>
 
-			<!-- table heading -->
-			<h2 id="titlepar"><span id="titdes">Meetings</span> <span id="mtgnum"></span></h2>
-			<p id="subtitlepar"><span id="subtitdes"></span></p>
-			<h3 id="printlink"><a href="javascript:prepForPrinting()">Print This Meeting List</a></h3>
-			<p class="codekey">O = Open Meeting, C = Closed Meeting, M = Men's Meeting, W = Women's Meeting, H = Handicap Accessible, G = LGBTQI, S = Spanish Speaking, KF = Kid Friendly, SI = Sign Language Interpreter, VSI = Volunteer SI (To Arrange Call CSO Accessibilities at 253-474-8897), @ = Alanon Meeting Runs Concurrently, YP = Young People, SM = Speaker Meeting</p>
-
-			<p class="clickmsg"><strong><span style="color:red">Note:&nbsp;</span></strong> Click On A Row To Display Additional Meeting Info</p>
+				<p class="clickmsg"><strong><span style="color:red">Note:&nbsp;</span></strong> Click On A Row To Display Additional Meeting Info</p>
+			</div>
 
 			<!-- the table div -->
 			<div id="sml_table"></div>
