@@ -52,14 +52,16 @@ class Meeting{
 		// combines address pieces together to create a whole address
 		let wholeaddress = this.address+", "+this.city+" WA "+this.zipcode;
 		
-		// adds the last update date at the end of the meeting notes
-		let newnotes;
+		// makes location and notes and empty string if null
+		let newlocation = this.location;
+		if (this.location == null) {
+			newlocation = "";
+		}
+		let newnotes = this.webnotes;
 		if (this.webnotes == null) {
-			newnotes = "Info Last Updated: "+this.lupdate;
+			newnotes = "";
 		}
-		else {
-			newnotes = this.webnotes+"; Info Last Updated: "+this.lupdate;	
-		}
+	
 		
 		// creates a String of the meeting info as an HTML table row and returns it
 		let htmlstring = "<tr><td class=\"oc col_day\">"+day+"</td>"; // day, input as parameter
@@ -68,7 +70,9 @@ class Meeting{
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
 		htmlstring = htmlstring+"<td class=\"col_address\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
 		htmlstring = htmlstring+"<td class=\"col_city\">"+this.city+"</td>"; // city
-		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td></tr>"; // notes
+		htmlstring = htmlstring+"<td class=\"col_location\">"+newlocation+"</td>"; // location
+		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td>"; // notes
+		htmlstring = htmlstring+"<td class=\"col_updated\">"+this.lupdate+"</td></tr>"; // updated
 		
 		return htmlstring;
 	}
