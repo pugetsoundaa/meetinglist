@@ -4,4 +4,4 @@
 
 ## See mathteacher/12sml_v2 repository for the original project repository
 
-## This repository is a customization of 12sml_v2 for use by www.piercecountyaa.org 
+## This repository is a customization of 12sml_v2 for use by www.pugetsoundaa.org

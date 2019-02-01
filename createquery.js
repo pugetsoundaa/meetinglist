@@ -2,8 +2,7 @@
 
 function createMeetingQuery(){
 	// sets the initial search query to the Google Sheet address
-	//let googleSheetURL = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing";
-	let googleSheetURL = "https://docs.google.com/spreadsheets/d/1si4mj-YVntcCXaV2tV8s3ekQDXQCUP-hXUsDmst6A1I/edit?usp=sharing";
+	let googleSheetURL = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing";
 	
 	// creates a global variable to store a dictionary of the booleans after processing the URL query string
 	smlURLparameters = processURLQueryString();
