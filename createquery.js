@@ -2,7 +2,8 @@
 
 function createMeetingQuery(){
 	// sets the initial search query to the Google Sheet address
-	let googleSheetURL = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing";
+	//let googleSheetURL = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing";
+	let googleSheetURL = "https://docs.google.com/spreadsheets/d/1si4mj-YVntcCXaV2tV8s3ekQDXQCUP-hXUsDmst6A1I/edit?usp=sharing";
 	
 	// creates a global variable to store a dictionary of the booleans after processing the URL query string
 	smlURLparameters = processURLQueryString();
@@ -104,127 +105,127 @@ function addSelections(){
 	}
 	if(getUrlVar("city")!=""){
 		if(count > 0){
-			selections = selections + " and F = \'"+decodeQS(getUrlVar("city"))+"\'";
+			selections = selections + " and G = \'"+decodeQS(getUrlVar("city"))+"\'";
 		}
 		else{
-			selections = selections + "where F = \'"+decodeQS(getUrlVar("city"))+"\'";
+			selections = selections + "where G = \'"+decodeQS(getUrlVar("city"))+"\'";
 		}
 		count++;
 	}
 	if(getUrlVar("zipcode")!=""){
 		if(count > 0){
-			selections = selections + " and G = "+getUrlVar("zipcode");
+			selections = selections + " and H = "+getUrlVar("zipcode");
 		}
 		else{
-			selections = selections + "where G = "+getUrlVar("zipcode");
+			selections = selections + "where H = "+getUrlVar("zipcode");
 		}
 		count++;
 	}
 	if(smlURLparameters.O){
 		if(count > 0){
-			selections = selections + " and D = 1"
+			selections = selections + " and E = 1";
 		}
 		else{
-			selections = selections + "where D = 1";
+			selections = selections + "where E = 1";
 		}
 		count++;
 	}
 	if(smlURLparameters.C){
 		if(count > 0){
-			selections = selections + " and D = 0"
+			selections = selections + " and E = 0";
 		}
 		else{
-			selections = selections + "where D = 0";
+			selections = selections + "where E = 0";
 		}
 		count++;
 	}
 	if(smlURLparameters.M){
 		if(count > 0){
-			selections = selections + " and R = 1"
-		}
-		else{
-			selections = selections + "where R = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.W){
-		if(count > 0){
-			selections = selections + " and S = 1"
-		}
-		else{
-			selections = selections + "where S = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.H){
-		if(count > 0){
-			selections = selections + " and T = 1"
-		}
-		else{
-			selections = selections + "where T = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.G){
-		if(count > 0){
-			selections = selections + " and U = 1"
-		}
-		else{
-			selections = selections + "where U = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.S){
-		if(count > 0){
-			selections = selections + " and V = 1"
+			selections = selections + " and V = 1";
 		}
 		else{
 			selections = selections + "where V = 1";
 		}
 		count++;
 	}
-	if(smlURLparameters.KF){
+	if(smlURLparameters.W){
 		if(count > 0){
-			selections = selections + " and W = 1"
+			selections = selections + " and W = 1";
 		}
 		else{
 			selections = selections + "where W = 1";
 		}
 		count++;
 	}
-	if(smlURLparameters.SI){
+	if(smlURLparameters.H){
 		if(count > 0){
-			selections = selections + " and (X = 1 or Y = 1)"
+			selections = selections + " and X = 1";
 		}
 		else{
-			selections = selections + "where (X = 1 or Y = 1)";
+			selections = selections + "where X = 1";
 		}
 		count++;
 	}
-	if(smlURLparameters.AL){
+	if(smlURLparameters.G){
 		if(count > 0){
-			selections = selections + " and Z = 1"
+			selections = selections + " and Y = 1";
+		}
+		else{
+			selections = selections + "where Y = 1";
+		}
+		count++;
+	}
+	if(smlURLparameters.S){
+		if(count > 0){
+			selections = selections + " and Z = 1";
 		}
 		else{
 			selections = selections + "where Z = 1";
 		}
 		count++;
 	}
-	if(smlURLparameters.YP){
+	if(smlURLparameters.KF){
 		if(count > 0){
-			selections = selections + " and AA = 1"
+			selections = selections + " and AA = 1";
 		}
 		else{
 			selections = selections + "where AA = 1";
 		}
 		count++;
 	}
-	if(smlURLparameters.SM){
+	if(smlURLparameters.SI){
 		if(count > 0){
-			selections = selections + " and AB = 1"
+			selections = selections + " and AB = 1";
 		}
 		else{
 			selections = selections + "where AB = 1";
+		}
+		count++;
+	}
+	if(smlURLparameters.AL){
+		if(count > 0){
+			selections = selections + " and AC = 1"
+		}
+		else{
+			selections = selections + "where AC = 1";
+		}
+		count++;
+	}
+	if(smlURLparameters.YP){
+		if(count > 0){
+			selections = selections + " and AD = 1"
+		}
+		else{
+			selections = selections + "where AD = 1";
+		}
+		count++;
+	}
+	if(smlURLparameters.SM){
+		if(count > 0){
+			selections = selections + " and AE = 1"
+		}
+		else{
+			selections = selections + "where AE = 1";
 		}
 		count++;
 	}

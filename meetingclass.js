@@ -3,16 +3,20 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_mname, in_stime, in_stime_num, in_open, in_address, in_city, in_zipcode, in_webnotes, in_wherewhennotes, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_vsi, in_alanon, in_young, in_speaker){
+	constructor(in_mname, in_stime, in_stime_num, in_slug, in_open, in_address, in_city, in_zipcode, in_district, in_location, in_webnotes, in_wherewhennotes, in_wherewhenname, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker){
 		this.mname = in_mname;
 		this.stime = in_stime;
 		this.stime_num = in_stime_num;
+		this.slug = in_slug;
 		this.open = in_open;
 		this.address = in_address;
 		this.city = in_city;
 		this.zipcode = in_zipcode;
+		this.district = in_district;
+		this.location = in_location;
 		this.webnotes = in_webnotes;
 		this.wherewhennotes = in_wherewhennotes;
+		this.wherewhenname = in_wherewhenname;
 		this.lupdate = in_lupdate;
 		this.sunday = in_sunday;
 		this.monday = in_monday;
@@ -28,7 +32,6 @@ class Meeting{
 		this.spanish = in_spanish;
 		this.kid = in_kid;
 		this.si = in_si;
-		this.vsi = in_vsi;
 		this.alanon = in_alanon;
 		this.young = in_young;
 		this.speaker = in_speaker;
@@ -121,13 +124,6 @@ class Meeting{
 				tempname = tempname+", ";
 			}
 			tempname = tempname+"SI";
-			changes++;
-		}
-		if(meeting.vsi==1){
-			if(changes > 0){
-				tempname = tempname+", ";
-			}
-			tempname = tempname+"VSI";
 			changes++;
 		}
 		if(meeting.alanon==1){
