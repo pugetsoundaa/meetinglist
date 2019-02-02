@@ -262,6 +262,11 @@ function updateTitleDescription(){
 		}
 		searchterms++;
 	}
+	//Added for Meeting Guide referrals
+	if(getUrlVar("slug")!=""){
+		titlestring = "Meeting Guide App Referral";
+		searchterms++;
+	}
 
 	// if there is only one search term then just change the title
 	if (searchterms == 1){

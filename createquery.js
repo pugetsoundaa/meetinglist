@@ -92,13 +92,22 @@ function processURLQueryString(){
 function addSelections(){
 	let selections = "";
 	let count = 0;
-	
+
 	if(getUrlVar("name")!=""){
 		if(count > 0){
 			selections = selections + " and A contains \'"+decodeQS(getUrlVar("name"))+"\'";
 		}
 		else{
 			selections = selections + "where A contains \'"+decodeQS(getUrlVar("name"))+"\'";
+		}
+		count++;
+	}
+	if(getUrlVar("slug")!=""){
+		if(count > 0){
+			selections = selections + " and D = \'"+getUrlVar("slug")+"\'";
+		}
+		else{
+			selections = selections + "where D = \'"+getUrlVar("slug")+"\'";
 		}
 		count++;
 	}
