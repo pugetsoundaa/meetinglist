@@ -72,20 +72,13 @@
 	text-align: center;	
 }
 
-#titlediv {
-	display: table;
+#titlediv, #subtitlepar {
+	text-align: center;
 }
 
-#titlediv_img, #titlediv_text {
-	display: table-cell;
-	vertical-align: middle;
-}
-
-@media only screen and (max-width: 450px)  {
-	#titlediv_img, #titlediv_text {
-		display: block;
-		text-align: center;
-	}
+#titlediv_img img {
+	margin-bottom: 20px;
+	max-width: 100%;
 }
 
 /* makes IE message div start out hidden */
