@@ -72,7 +72,8 @@
 	text-align: center;	
 }
 
-#titlediv, #subtitlepar {
+/* styles for title and footer */
+#titlediv, #subtitlepar, .sml_links {
 	text-align: center;
 }
 
@@ -80,6 +81,11 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 	max-width: 100%;
+}
+
+.sml_links {
+	margin-top: 30px;
+	font-size: 1.15em;
 }
 
 /* makes IE message div start out hidden */
