@@ -106,7 +106,7 @@ class Meeting{
 			if(changes > 0){
 				tempname = tempname+", ";
 			}
-			tempname = tempname+"G";
+			tempname = tempname+"L";
 			changes++;
 		}
 		if(meeting.spanish==1){
@@ -120,14 +120,14 @@ class Meeting{
 			if(changes > 0){
 				tempname = tempname+", ";
 			}
-			tempname = tempname+"KF";
+			tempname = tempname+"K";
 			changes++;
 		}
 		if(meeting.si==1){
 			if(changes > 0){
 				tempname = tempname+", ";
 			}
-			tempname = tempname+"SI";
+			tempname = tempname+"A";
 			changes++;
 		}
 		if(meeting.alanon==1){
@@ -141,14 +141,14 @@ class Meeting{
 			if(changes > 0){
 				tempname = tempname+", ";
 			}
-			tempname = tempname+"YP";
+			tempname = tempname+"Y";
 			changes++;
 		}
 		if(meeting.speaker==1){
 			if(changes > 0){
 				tempname = tempname+", ";
 			}
-			tempname = tempname+"SM";
+			tempname = tempname+"P";
 			changes++;
 		}
 

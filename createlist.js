@@ -183,27 +183,27 @@ function updateTitleDescription(){
 		searchterms++;
 	}
 	if(smlURLparameters.H){
-		titlestring = "Handicap Accesible Meetings";
+		titlestring = "Wheelchair Accesible Meetings";
 		if(searchterms > 0){
-			subtitlestring = subtitlestring+", Handicap Accesible";
+			subtitlestring = subtitlestring+", Wheelchair Accesible";
 		}
 		else {
-			subtitlestring = subtitlestring+"Handicap Accesible";
+			subtitlestring = subtitlestring+"Wheelchair Accesible";
 		}
 		searchterms++;
 	}
 	if(smlURLparameters.G){
-		titlestring = "LGBTQI Meetings";
+		titlestring = "LGBTQ Meetings";
 		if(searchterms > 0){
-			subtitlestring = subtitlestring+", LGBTQI";
+			subtitlestring = subtitlestring+", LGBTQ";
 		}
 		else {
-			subtitlestring = subtitlestring+"LGBTQI";
+			subtitlestring = subtitlestring+"LGBTQ";
 		}
 		searchterms++;
 	}
 	if(smlURLparameters.S){
-		titlestring = "Spanish Speaking Meetings";
+		titlestring = "Spanish Language Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", Spanish Speaking";
 		}
