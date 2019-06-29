@@ -31,6 +31,7 @@
 		<script src="createquery.js"></script>
 		<script src="createarray.js"></script>
 		<script src="createlist.js"></script>
+		<script src="googlesheet.js"></script>
 
 		<!--favicon-->
 		<link rel="shortcut icon" href="https://apps.pugetsoundaa.org/meetinglist/favicon.ico">
@@ -47,13 +48,9 @@
 			}
 			// otherwise display meeting table	    
 			else{
-				google.charts.load('current', {packages: ['corechart']});
-  				google.charts.setOnLoadCallback(generateTable);
+				let gs_id="1prbiXHu9JS5eREkYgBQkxlkJELRHqrKz6-_PLGPWIWk"
+				googlesheet(gs_id);
 			}
-
-  			function generateTable(){
-				createMeetingQuery();
-  			}
 
   			// Function to check if browser is IE
   			function isIE() {
