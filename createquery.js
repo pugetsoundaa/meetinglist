@@ -1,245 +1,84 @@
 // Create Query Function and Helper Functions
 
-function createMeetingQuery(){
-	// sets the initial search query to the Google Sheet address
-	let googleSheetURL = "https://docs.google.com/spreadsheets/d/1fLxXxKFIiuPJOuTTNzAn1S0rmgjRQhFxqDNZabACIcI/edit?usp=sharing";
+function processMeetings(meetings){
 	
-	// creates a global variable to store a dictionary of the booleans after processing the URL query string
-	smlURLparameters = processURLQueryString();
+	let urlParameters = processURLQueryString();
 
-	// creates the search query
-	let searchQuery = addSelections();
+	meetings = filterMeetings(meetings, urlParameters);
 
-	// creates the Query object and sends the QueryResponse object to processQuery function 
-	let searchQueryObject = new google.visualization.Query(googleSheetURL);
-	searchQueryObject.setQuery(searchQuery);
-	searchQueryObject.send(processQuery);
+	createMeetingArray(meetings, urlParameters);
 }
 
-function processQuery(queryResponse){
-	// recieves the QueryResponse object and then sends a DataTable object to createMeetingArray function
-	createMeetingArray(queryResponse.getDataTable());
+function filterMeetings(meetings, params) {
+	let rawArraysOfMeetings = [[],[],[],[],[],[],[]];
+	for (let i=0; i<meetings.length; i++) {
+
+		// checks for any set parameters (besides days) and will toss meetings that don't match
+		let = shouldKeep = true;
+		if (params.open && !meetings[i].types.includes("O")) shouldKeep = false;
+		if (params.closed && !meetings[i].types.includes("C")) shouldKeep = false;
+		if (params.men && !meetings[i].types.includes("M")) shouldKeep = false;
+		if (params.woman && !meetings[i].types.includes("W")) shouldKeep = false;
+		if (params.handi && !meetings[i].types.includes("X")) shouldKeep = false;
+		if (params.lgbt && !meetings[i].types.includes("LGBTQ")) shouldKeep = false;
+		if (params.spanish && !meetings[i].types.includes("S")) shouldKeep = false;
+		if (params.kid && !meetings[i].types.includes("CF")) shouldKeep = false;
+		if (params.asl && !meetings[i].types.includes("ASL")) shouldKeep = false;
+		if (params.alanon && !meetings[i].types.includes("AL-AN")) shouldKeep = false;
+		if (params.young && !meetings[i].types.includes("Y")) shouldKeep = false;
+		if (params.speaker && !meetings[i].types.includes("SP")) shouldKeep = false;
+		if (params.name && !meetings.name.toLowerCase() == params.name) shouldKeep = false;
+		if (params.city && !meetings.city.toLowerCase() == params.city) shouldKeep = false;
+		if (params.zipcode && !meetings.postal_code == params.zipcode) shouldKeep = false;
+
+		// sort into array for that day of the week if not tossed
+		if(meetings[i].day == "0" && shouldKeep){
+			rawArraysOfMeetings[0].push(meetings[i]);
+		} else if (meetings[i].day == "1" && shouldKeep){
+			rawArraysOfMeetings[1].push(meetings[i]);
+		} else if (meetings[i].day == "2" && shouldKeep){
+			rawArraysOfMeetings[2].push(meetings[i]);
+		} else if (meetings[i].day == "3" && shouldKeep){
+			rawArraysOfMeetings[3].push(meetings[i]);
+		} else if (meetings[i].day == "4" && shouldKeep){
+			rawArraysOfMeetings[4].push(meetings[i]);
+		} else if (meetings[i].day == "5" && shouldKeep){
+			rawArraysOfMeetings[5].push(meetings[i]);
+		} else if (meetings[i].day == "6" && shouldKeep){
+			rawArraysOfMeetings[6].push(meetings[i]);
+		}
+	}
+	console.log(rawArraysOfMeetings);
+	return rawArraysOfMeetings;
 }
 
 function processURLQueryString(){
-	// creates dictionary with all initially set to false
-	let URLparameters = {SUN: false, MON: false, TUE: false, WED: false, THU: false, FRI: false, SAT: false, O: false, C: false, M: false, W: false, H: false, G: false, S: false, KF: false, SI: false, AL: false, YP: false, SM: false};
-	
-	//uses the getUrlVar function to see if any of the URL parameters are set to one and if so updates associated dictionary key value to true 
-	if(getUrlVar("sunday")==1){
-		URLparameters.SUN = true;
-	}
-	if(getUrlVar("monday")==1){
-		URLparameters.MON = true;
-	}
-	if(getUrlVar("tuesday")==1){
-		URLparameters.TUE = true;
-	}
-	if(getUrlVar("wednesday")==1){
-		URLparameters.WED = true;
-	}
-	if(getUrlVar("thursday")==1){
-		URLparameters.THU = true;
-	}
-	if(getUrlVar("friday")==1){
-		URLparameters.FRI = true;
-	}
-	if(getUrlVar("saturday")==1){
-		URLparameters.SAT = true;
-	}
-	if(getUrlVar("open")==1){
-		URLparameters.O = true;
-	}
-	if(getUrlVar("closed")==1){
-		URLparameters.C = true;
-	}
-	if(getUrlVar("men")==1){
-		URLparameters.M = true;
-	}
-	// had to use woman instead of women as women triggered men as well do to word overlap
-	if(getUrlVar("woman")==1){
-		URLparameters.W = true;
-	}
-	if(getUrlVar("handi")==1){
-		URLparameters.H = true;
-	}
-	if(getUrlVar("lgbt")==1){
-		URLparameters.G = true;
-	}
-	if(getUrlVar("spanish")==1){
-		URLparameters.S = true;
-	}
-	if(getUrlVar("kid")==1){
-		URLparameters.KF = true;
-	}
-	if(getUrlVar("asl")==1){
-		URLparameters.SI = true;
-	}
-	if(getUrlVar("alanon")==1){
-		URLparameters.AL = true;
-	}
-	if(getUrlVar("young")==1){
-		URLparameters.YP = true;
-	}
-	if(getUrlVar("speaker")==1){
-		URLparameters.SM = true;
-	}
-
-
-	return URLparameters;
-}
-
-function addSelections(){
-	let selections = "";
-	let count = 0;
-
-	if(getUrlVar("name")!=""){
-		if(count > 0){
-			selections = selections + " and A contains \'"+decodeQS(getUrlVar("name"))+"\'";
-		}
-		else{
-			selections = selections + "where A contains \'"+decodeQS(getUrlVar("name"))+"\'";
-		}
-		count++;
-	}
-	if(getUrlVar("slug")!=""){
-		if(count > 0){
-			selections = selections + " and D = \'"+getUrlVar("slug")+"\'";
-		}
-		else{
-			selections = selections + "where D = \'"+getUrlVar("slug")+"\'";
-		}
-		count++;
-	}
-	if(getUrlVar("city")!=""){
-		if(count > 0){
-			selections = selections + " and G = \'"+decodeQS(getUrlVar("city"))+"\'";
-		}
-		else{
-			selections = selections + "where G = \'"+decodeQS(getUrlVar("city"))+"\'";
-		}
-		count++;
-	}
-	if(getUrlVar("zipcode")!=""){
-		if(count > 0){
-			selections = selections + " and H = "+getUrlVar("zipcode");
-		}
-		else{
-			selections = selections + "where H = "+getUrlVar("zipcode");
-		}
-		count++;
-	}
-	if(smlURLparameters.O){
-		if(count > 0){
-			selections = selections + " and E = 1";
-		}
-		else{
-			selections = selections + "where E = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.C){
-		if(count > 0){
-			selections = selections + " and E = 0";
-		}
-		else{
-			selections = selections + "where E = 0";
-		}
-		count++;
-	}
-	if(smlURLparameters.M){
-		if(count > 0){
-			selections = selections + " and V = 1";
-		}
-		else{
-			selections = selections + "where V = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.W){
-		if(count > 0){
-			selections = selections + " and W = 1";
-		}
-		else{
-			selections = selections + "where W = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.H){
-		if(count > 0){
-			selections = selections + " and X = 1";
-		}
-		else{
-			selections = selections + "where X = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.G){
-		if(count > 0){
-			selections = selections + " and Y = 1";
-		}
-		else{
-			selections = selections + "where Y = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.S){
-		if(count > 0){
-			selections = selections + " and Z = 1";
-		}
-		else{
-			selections = selections + "where Z = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.KF){
-		if(count > 0){
-			selections = selections + " and AA = 1";
-		}
-		else{
-			selections = selections + "where AA = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.SI){
-		if(count > 0){
-			selections = selections + " and AB = 1";
-		}
-		else{
-			selections = selections + "where AB = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.AL){
-		if(count > 0){
-			selections = selections + " and AC = 1"
-		}
-		else{
-			selections = selections + "where AC = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.YP){
-		if(count > 0){
-			selections = selections + " and AD = 1"
-		}
-		else{
-			selections = selections + "where AD = 1";
-		}
-		count++;
-	}
-	if(smlURLparameters.SM){
-		if(count > 0){
-			selections = selections + " and AE = 1"
-		}
-		else{
-			selections = selections + "where AE = 1";
-		}
-		count++;
-	}
-
-	
-	return selections;
+	// creates dictionary of url query parameters
+	let urlParameters = {
+		SUN: getUrlVar("sunday")==1, 
+		MON: getUrlVar("monday")==1, 
+		TUE: getUrlVar("tuesday")==1, 
+		WED: getUrlVar("wednesday")==1, 
+		THU: getUrlVar("thursday")==1, 
+		FRI: getUrlVar("friday")==1, 
+		SAT: getUrlVar("saturday")==1, 
+		O: getUrlVar("open")==1, 
+		C: getUrlVar("closed")==1, 
+		M: getUrlVar("men")==1, 
+		W: getUrlVar("woman")==1, 
+		H: getUrlVar("handi")==1, 
+		G: getUrlVar("lgbt")==1, 
+		S: getUrlVar("spanish")==1, 
+		KF: getUrlVar("kid")==1, 
+		SI: getUrlVar("asl")==1, 
+		AL: getUrlVar("alanon")==1, 
+		YP: getUrlVar("young")==1, 
+		SM: getUrlVar("speaker")==1,
+		name: decodeQS(getUrlVar("name")),
+		city: decodeQS(getUrlVar("city")),
+		zipcode: getUrlVar("zipcode")
+	};
+	return urlParameters;
 }
 
 // helper function to get URL Parameter from https://gist.github.com/varemenos/2531765
@@ -252,11 +91,5 @@ function getUrlVar(key){
 function decodeQS(qString){
 	qString = qString.replace(/\+/g, '%20');
 	qString = decodeURIComponent(qString);
-	return toTitleCase(qString);
-}
-
-// helper function to capitalize the first letter of every word in a string
-function toTitleCase(str)
-{
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	return qString.toLowerCase();
 }
