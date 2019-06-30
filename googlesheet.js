@@ -27,9 +27,9 @@ function googlesheet(gs_id){
 			if (timeTemp.includes('am')) {
 				meeting.time =  timeTemp.substr(0, timeTemp.indexOf(' am'));
 				if (meeting.time == 12) {
-				let [ tempHours, tempMinutes ] = timeTemp.split(':');
-				tempHours = parseInt(tempHours) - 12;
-				meeting.time = tempHours + ':' + tempMinutes;
+					let [ tempHours, tempMinutes ] = timeTemp.split(':');
+					tempHours = parseInt(tempHours) + 12;
+					meeting.time = tempHours + ':' + tempMinutes;
 				}
 			} else if (timeTemp.includes('pm')) {
 				timeTemp = timeTemp.substr(0, timeTemp.indexOf(' pm'));

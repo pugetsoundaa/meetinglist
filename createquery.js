@@ -12,24 +12,23 @@ function processMeetings(meetings){
 function filterMeetings(meetings, params) {
 	let rawArraysOfMeetings = [[],[],[],[],[],[],[]];
 	for (let i=0; i<meetings.length; i++) {
-
 		// checks for any set parameters (besides days) and will toss meetings that don't match
 		let = shouldKeep = true;
-		if (params.open && !meetings[i].types.includes("O")) shouldKeep = false;
-		if (params.closed && !meetings[i].types.includes("C")) shouldKeep = false;
-		if (params.men && !meetings[i].types.includes("M")) shouldKeep = false;
-		if (params.woman && !meetings[i].types.includes("W")) shouldKeep = false;
-		if (params.handi && !meetings[i].types.includes("X")) shouldKeep = false;
-		if (params.lgbt && !meetings[i].types.includes("LGBTQ")) shouldKeep = false;
-		if (params.spanish && !meetings[i].types.includes("S")) shouldKeep = false;
-		if (params.kid && !meetings[i].types.includes("CF")) shouldKeep = false;
-		if (params.asl && !meetings[i].types.includes("ASL")) shouldKeep = false;
-		if (params.alanon && !meetings[i].types.includes("AL-AN")) shouldKeep = false;
-		if (params.young && !meetings[i].types.includes("Y")) shouldKeep = false;
-		if (params.speaker && !meetings[i].types.includes("SP")) shouldKeep = false;
-		if (params.name && !meetings.name.toLowerCase() == params.name) shouldKeep = false;
-		if (params.city && !meetings.city.toLowerCase() == params.city) shouldKeep = false;
-		if (params.zipcode && !meetings.postal_code == params.zipcode) shouldKeep = false;
+		if (params.O && !meetings[i].types.includes("O")) shouldKeep = false;
+		if (params.C && !meetings[i].types.includes("C")) shouldKeep = false;
+		if (params.M && !meetings[i].types.includes("M")) shouldKeep = false;
+		if (params.W && !meetings[i].types.includes("W")) shouldKeep = false;
+		if (params.X && !meetings[i].types.includes("X")) shouldKeep = false;
+		if (params.LGBTQ && !meetings[i].types.includes("LGBTQ")) shouldKeep = false;
+		if (params.S && !meetings[i].types.includes("S")) shouldKeep = false;
+		if (params.CF && !meetings[i].types.includes("CF")) shouldKeep = false;
+		if (params.ASL && !meetings[i].types.includes("ASL")) shouldKeep = false;
+		if (params.AL && !meetings[i].types.includes("AL-AN")) shouldKeep = false;
+		if (params.Y && !meetings[i].types.includes("Y")) shouldKeep = false;
+		if (params.SP && !meetings[i].types.includes("SP")) shouldKeep = false;
+		if (params.name && !(meetings[i].name.toLowerCase().includes(params.name.toLowerCase()))) shouldKeep = false;
+		if (params.city && !(meetings[i].city.toLowerCase() == params.city.toLowerCase())) shouldKeep = false;
+		if (params.zipcode && !(meetings[i].postal_code == params.zipcode)) shouldKeep = false;
 
 		// sort into array for that day of the week if not tossed
 		if(meetings[i].day == "0" && shouldKeep){
@@ -91,5 +90,5 @@ function getUrlVar(key){
 function decodeQS(qString){
 	qString = qString.replace(/\+/g, '%20');
 	qString = decodeURIComponent(qString);
-	return qString.toLowerCase();
+	return qString;
 }

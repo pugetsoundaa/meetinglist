@@ -3,14 +3,12 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_mname, in_stime, in_stime_num, in_slug, in_open, in_address, in_city, in_zipcode, in_district, in_location, in_webnotes, in_wherewhennotes, in_wherewhenname, in_lupdate, in_sunday, in_monday, in_tuesday, in_wednesday, in_thursday, in_friday, in_saturday, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker){
+	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker){
 		this.mname = in_mname;
 		this.stime = in_stime;
-		
 		this.address = in_address;
 		this.city = in_city;
 		this.zipcode = in_zipcode;
-		this.district = in_district;
 		this.location = in_location;
 		this.webnotes = in_webnotes;
 		this.lupdate = in_lupdate;
@@ -55,7 +53,7 @@ class Meeting{
 		
 		// creates a String of the meeting info as an HTML table row and returns it
 		let htmlstring = "<tr><td class=\"oc col_day\">"+day+"</td>"; // day, input as parameter
-		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+this.stime_num+"\">"+this.stime+"</td>"; // String start time with numeric data-value for sorting
+		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+this.stime+"\">"+Meeting.formatTime(this.stime)+"</td>"; // String start time with numeric data-value for sorting
 		htmlstring = htmlstring+"<td class=\"oc col_oc\">"+open_char+"</td><td class=\"col_name\">"+newmname+"</td>"; // O or C and New Name
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
 		htmlstring = htmlstring+"<td class=\"col_address\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
@@ -66,6 +64,22 @@ class Meeting{
 		
 		return htmlstring;
 	}
+
+	static formatTime(time){
+		let [ hours, minutes ] = time.split(':');
+		let ampm = 'AM';
+		hours = parseInt(hours);
+		if (hours == 0) {
+			hours = 12;
+			if (minutes == '00') return 'Mid';
+		} else if (hours > 11) {
+			if (hours == 12 && minutes == '00') return 'Noon'; 
+			if (hours == 23 && minutes == '59' || hours == 24 && minutes == '00') return 'Mid';
+			ampm = 'PM';
+			if (hours > 12) hours -= 12;
+		}
+		return hours + ':' + minutes + ' ' + ampm;
+		}
 
 	static addToName(mname, meeting){
 		let tempname = mname+" (";
