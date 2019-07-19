@@ -47,7 +47,7 @@ function filterMeetings(meetings, params) {
 			rawArraysOfMeetings[6].push(meetings[i]);
 		}
 	}
-	console.log(rawArraysOfMeetings);
+	
 	return rawArraysOfMeetings;
 }
 

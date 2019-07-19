@@ -45,7 +45,7 @@ function createDayMeetingObjectArray(rawData){
 		let stime = rawData[i].time;
 		let address = rawData[i].address;
 		let city = rawData[i].city;
-		let zipcode = rawData[i].postal_code;
+		let zipcode = rawData[i].postalcode;
 		let location = rawData[i].location;
 		let webnotes = rawData[i].notes;
 		let lupdate = rawData[i].updated;

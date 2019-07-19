@@ -40,7 +40,7 @@ class Meeting{
 		// combines address pieces together to create a whole address
 		let wholeaddress = this.address+", "+this.city+" WA "+this.zipcode;
 		
-		// makes location and notes and empty string if null
+		// makes location and notes an empty string if null
 		let newlocation = this.location;
 		if (this.location == null) {
 			newlocation = "";
@@ -48,21 +48,32 @@ class Meeting{
 		let newnotes = this.webnotes;
 		if (this.webnotes == null) {
 			newnotes = "";
-		}
-	
+		}	
 		
 		// creates a String of the meeting info as an HTML table row and returns it
 		let htmlstring = "<tr><td class=\"oc col_day\">"+day+"</td>"; // day, input as parameter
-		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+this.stime+"\">"+Meeting.formatTime(this.stime)+"</td>"; // String start time with numeric data-value for sorting
+		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+Meeting.formatSortableTime(this.stime)+"\">"+Meeting.formatTime(this.stime)+"</td>"; // String start time with numeric data-value for sorting
 		htmlstring = htmlstring+"<td class=\"oc col_oc\">"+open_char+"</td><td class=\"col_name\">"+newmname+"</td>"; // O or C and New Name
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
 		htmlstring = htmlstring+"<td class=\"col_address\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
 		htmlstring = htmlstring+"<td class=\"col_city\">"+this.city+"</td>"; // city
 		htmlstring = htmlstring+"<td class=\"col_location\">"+newlocation+"</td>"; // location
 		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td>"; // notes
-		htmlstring = htmlstring+"<td class=\"col_updated\">"+this.lupdate+"</td></tr>"; // updated
+		htmlstring = htmlstring+"<td class=\"col_updated\">"+Meeting.formatUpdated(this.lupdate)+"</td></tr>"; // updated
 		
 		return htmlstring;
+	}
+
+	static formatUpdated(updated){
+		let month = (updated.substring(5,6) == "0" ? updated.substring(6,7) : updated.substring(5,7));
+		let day = (updated.substring(8,9) == "0" ? updated.substring(9,10) : updated.substring(8,10));
+
+		return month.concat("/",day,"/",updated.substring(0,4));
+	}
+
+	static formatSortableTime(time){
+		let [ hours, minutes ] = time.split(':');
+		return hours.concat(minutes);
 	}
 
 	static formatTime(time){
@@ -79,7 +90,7 @@ class Meeting{
 			if (hours > 12) hours -= 12;
 		}
 		return hours + ':' + minutes + ' ' + ampm;
-		}
+	}
 
 	static addToName(mname, meeting){
 		let tempname = mname+" (";
