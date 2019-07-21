@@ -28,7 +28,7 @@ function filterMeetings(meetings, params) {
 		if (params.SP && !meetings[i].types.includes("SP")) shouldKeep = false;
 		if (params.name && !(meetings[i].name.toLowerCase().includes(params.name.toLowerCase()))) shouldKeep = false;
 		if (params.city && !(meetings[i].city.toLowerCase() == params.city.toLowerCase())) shouldKeep = false;
-		if (params.zipcode && !(meetings[i].postal_code == params.zipcode)) shouldKeep = false;
+		if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
 
 		// sort into array for that day of the week if not tossed
 		if(meetings[i].day == "0" && shouldKeep){
@@ -47,7 +47,7 @@ function filterMeetings(meetings, params) {
 			rawArraysOfMeetings[6].push(meetings[i]);
 		}
 	}
-	
+
 	return rawArraysOfMeetings;
 }
 
