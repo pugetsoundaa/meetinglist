@@ -25,7 +25,7 @@ function filterMeetings(meetings, params) {
 		if (params.ASL && !meetings[i].types.includes("ASL")) shouldKeep = false;
 		if (params.AL && !meetings[i].types.includes("AL-AN")) shouldKeep = false;
 		if (params.Y && !meetings[i].types.includes("Y")) shouldKeep = false;
-		if (params.SP && !meetings[i].types.includes("SP")) shouldKeep = false;
+		if (params.P && !meetings[i].types.includes("SP")) shouldKeep = false;
 		if (params.name && !(meetings[i].name.toLowerCase().includes(params.name.toLowerCase()))) shouldKeep = false;
 		if (params.city && !(meetings[i].city.toLowerCase() == params.city.toLowerCase())) shouldKeep = false;
 		if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
@@ -65,14 +65,14 @@ function processURLQueryString(){
 		C: getUrlVar("closed")==1, 
 		M: getUrlVar("men")==1, 
 		W: getUrlVar("woman")==1, 
-		H: getUrlVar("handi")==1, 
-		G: getUrlVar("lgbt")==1, 
+		X: getUrlVar("handi")==1, 
+		LGBTQ: getUrlVar("lgbt")==1, 
 		S: getUrlVar("spanish")==1, 
-		KF: getUrlVar("kid")==1, 
-		SI: getUrlVar("asl")==1, 
+		CF: getUrlVar("kid")==1, 
+		ASL: getUrlVar("asl")==1, 
 		AL: getUrlVar("alanon")==1, 
-		YP: getUrlVar("young")==1, 
-		SM: getUrlVar("speaker")==1,
+		Y: getUrlVar("young")==1, 
+		P: getUrlVar("speaker")==1,
 		name: decodeQS(getUrlVar("name")),
 		city: decodeQS(getUrlVar("city")),
 		zipcode: getUrlVar("zipcode")

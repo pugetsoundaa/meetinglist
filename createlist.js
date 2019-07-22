@@ -182,7 +182,7 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	if(urlParameters.H){
+	if(urlParameters.X){
 		titlestring = "Wheelchair Accesible Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", Wheelchair Accesible";
@@ -192,7 +192,7 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	if(urlParameters.G){
+	if(urlParameters.LGBTQ){
 		titlestring = "LGBTQ Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", LGBTQ";
@@ -212,7 +212,7 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	if(urlParameters.KF){
+	if(urlParameters.CF){
 		titlestring = "Kid Friendly Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", Kid Friendly";
@@ -222,8 +222,8 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	if(urlParameters.SI){
-		titlestring = "Sign Language Interpreter Meetings";
+	if(urlParameters.ASL){
+		titlestring = "American Sign Language Interpreter Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", Sign Language Interpreter";
 		}
@@ -242,7 +242,7 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	if(urlParameters.YP){
+	if(urlParameters.Y){
 		titlestring = "Young People Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", Young People";
@@ -252,7 +252,7 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	if(urlParameters.SM){
+	if(urlParameters.P){
 		titlestring = "Speaker Meetings";
 		if(searchterms > 0){
 			subtitlestring = subtitlestring+", Speaker Meeting";
