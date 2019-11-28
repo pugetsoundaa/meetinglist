@@ -262,9 +262,14 @@ function updateTitleDescription(urlParameters){
 		}
 		searchterms++;
 	}
-	//Added for Meeting Guide referrals
-	if(getUrlVar("slug")!=""){
-		titlestring = "Meeting Guide App Referral";
+	if(getUrlVar("district")!=""){
+		titlestring = "District "+getUrlVar("district")+" Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", District "+getUrlVar("district");
+		}
+		else {
+			subtitlestring = subtitlestring+"District "+getUrlVar("district");
+		}
 		searchterms++;
 	}
 

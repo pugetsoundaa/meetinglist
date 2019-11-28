@@ -3,7 +3,7 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker){
+	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker, in_district){
 		this.mname = in_mname;
 		this.stime = in_stime;
 		this.address = in_address;
@@ -23,6 +23,7 @@ class Meeting{
 		this.alanon = in_alanon;
 		this.young = in_young;
 		this.speaker = in_speaker;
+		this.distict = in_district;
 	}
 
 	// function to display a meeting object as an HTML table row

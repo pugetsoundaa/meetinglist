@@ -60,9 +60,10 @@ function createDayMeetingObjectArray(rawData){
 		let alanon = rawData[i].types.includes("AL-AN");
 		let young = rawData[i].types.includes("Y");
 		let speaker = rawData[i].types.includes("SP");
+		let district = rawData[i].district;
 		
 		// call the meeting object constructor
-		let meeting = new Meeting(name, stime, address, city, zipcode, location, webnotes, lupdate, open, mens, womens, handi, lgbtq, spanish, kid, si, alanon, young, speaker);	
+		let meeting = new Meeting(name, stime, address, city, zipcode, location, webnotes, lupdate, open, mens, womens, handi, lgbtq, spanish, kid, si, alanon, young, speaker, district);	
 		arrayOfMeetingObjects[i] = meeting;
 	}
 	return arrayOfMeetingObjects;
