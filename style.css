@@ -73,7 +73,7 @@
 }
 
 /* styles for title and footer */
-#titlediv, #subtitlepar, .sml_links {
+#titlediv, #subtitlepar, .sml_links, .meetingguide {
 	text-align: center;
 }
 
@@ -86,6 +86,34 @@
 .sml_links {
 	margin-top: 30px;
 	font-size: 1.15em;
+}
+
+.meetingguide {
+	font-size: 1.3em;
+	font-style: italic;
+}
+
+.meetingguide_message, .meetingguide_logo {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.meetingguide_message p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.meetingguide {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media only screen and (max-width: 450px)  {
+	.meetingguide_message, .meetingguide_logo {
+		display: block;
+	}
 }
 
 /* makes IE message div start out hidden */
