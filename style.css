@@ -11,7 +11,7 @@
 }
 
 @media only screen and (max-width: 450px)  {
-	#sml_customsearch, #sml_tableheading{
+	#sml_customsearch, #sml_tableheading {
 		font-size: 1.10em;
 	}
 }
@@ -113,6 +113,7 @@
 @media only screen and (max-width: 450px)  {
 	.meetingguide_message, .meetingguide_logo {
 		display: block;
+		font-size: 0.85em;
 	}
 }
 
