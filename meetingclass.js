@@ -3,7 +3,7 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker, in_district){
+	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker, in_district, in_tc, in_onl, in_nl, in_conference_url, in_conference_phone){
 		this.mname = in_mname;
 		this.stime = in_stime;
 		this.address = in_address;
@@ -24,6 +24,11 @@ class Meeting{
 		this.young = in_young;
 		this.speaker = in_speaker;
 		this.distict = in_district;
+		this.tc = in_tc;
+		this.onl = in_onl;
+		this.nl = in_nl;
+		this.conference_url = in_conference_url;
+		this.conference_phone = in_conference_phone;
 	}
 
 	// function to display a meeting object as an HTML table row
@@ -49,8 +54,16 @@ class Meeting{
 		let newnotes = this.webnotes;
 		if (this.webnotes == null) {
 			newnotes = "";
-		}	
-		
+		}
+		let newurl = this.conference_url;	
+		if (this.conference_url == null) {
+			newurl = "";
+		}
+		let newphone = this.conference_phone;	
+		if (this.conference_phone == null) {
+			newphone = "";
+		}
+
 		// creates a String of the meeting info as an HTML table row and returns it
 		let htmlstring = "<tr><td class=\"oc col_day\">"+day+"</td>"; // day, input as parameter
 		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+Meeting.formatSortableTime(this.stime)+"\">"+Meeting.formatTime(this.stime)+"</td>"; // String start time with numeric data-value for sorting
@@ -60,6 +73,8 @@ class Meeting{
 		htmlstring = htmlstring+"<td class=\"col_city\">"+this.city+"</td>"; // city
 		htmlstring = htmlstring+"<td class=\"col_location\">"+newlocation+"</td>"; // location
 		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td>"; // notes
+		htmlstring = htmlstring+"<td class=\"col_url\"><a target=\"_blank\" href=\""+newurl+"\">"+newurl+"</a></td>"; // conference_url
+		htmlstring = htmlstring+"<td class=\"col_phone\"><a target=\"_blank\" href=\"tel:1-"+newphone+"\">"+newphone+"</a></td>"; // conference_phone
 		htmlstring = htmlstring+"<td class=\"col_updated\">"+Meeting.formatUpdated(this.lupdate)+"</td></tr>"; // updated
 		
 		return htmlstring;
@@ -94,7 +109,24 @@ class Meeting{
 	}
 
 	static addToName(mname, meeting){
-		let tempname = mname+" (";
+		let mname_mod = mname;
+		if(meeting.nl==1){
+			mname_mod = mname_mod + " [Online Meeting Only]";
+		}
+		else if(meeting.tc==1 && meeting.onl==1){
+			mname_mod = mname_mod + " [Online Meeting / Temporarily Closed at Location]";
+		}
+		else if(meeting.tc==1){
+			mname_mod = mname_mod + " [Temporarily Closed at Location]";
+		}
+		else if(meeting.onl==1){
+			mname_mod = mname_mod + " [Face to Face at Location & Concurrent Online Meeting]";
+		}
+		else {
+			mname_mod = mname_mod + " [Face to Face at Location]";
+		}
+
+		let tempname = mname_mod+" (";
 		let changes = 0;
 
 		if(meeting.mens==1){
@@ -174,7 +206,7 @@ class Meeting{
 			return tempname;
 		}
 		else{
-			return mname;
+			return mname_mod;
 		}
 		
 	}
