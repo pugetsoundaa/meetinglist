@@ -122,4 +122,13 @@
 	display: none;
 }
 
+/* make TC meetings be greyed out and struck through */
+.col_address_tc{
+	text-decoration: line-through;
+}
+
+.col_address_tc a:any-link {
+	color: grey;
+}
+
 

@@ -3,7 +3,7 @@
 class Meeting{
 
 	// meeting object constructor, fields match database
-	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker, in_district, in_tc, in_onl, in_nl, in_conference_url, in_conference_phone){
+	constructor(in_mname, in_stime, in_address, in_city, in_zipcode, in_location, in_webnotes, in_lupdate, in_open, in_mens, in_womens, in_handi, in_lgbtq, in_spanish, in_kid, in_si, in_alanon, in_young, in_speaker, in_district, in_tc, in_onl, in_nl, in_conference_url, in_conference_phone, in_venmo){
 		this.mname = in_mname;
 		this.stime = in_stime;
 		this.address = in_address;
@@ -29,6 +29,7 @@ class Meeting{
 		this.nl = in_nl;
 		this.conference_url = in_conference_url;
 		this.conference_phone = in_conference_phone;
+		this.venmo = in_venmo;
 	}
 
 	// function to display a meeting object as an HTML table row
@@ -45,6 +46,17 @@ class Meeting{
 
 		// combines address pieces together to create a whole address
 		let wholeaddress = this.address+", "+this.city+" WA "+this.zipcode;
+
+		let address_td = "";
+		if(this.tc==1) {
+			address_td = "<td class=\"col_address_tc\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
+		}
+		else if(this.nl==1) {
+			address_td = "<td class=\"col_address_nl\"></td>";
+		}
+		else{
+			address_td = "<td class=\"col_address\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
+		}
 		
 		// makes location and notes an empty string if null
 		let newlocation = this.location;
@@ -59,9 +71,12 @@ class Meeting{
 		if (this.conference_url == null) {
 			newurl = "";
 		}
-		let newphone = this.conference_phone;	
+		let newphone = this.conference_phone;
+		let newphone_display = "";	
 		if (this.conference_phone == null) {
 			newphone = "";
+		} else {
+			newphone_display = newphone.substring(2,5)+"-"+newphone.substring(5,8)+"-"+newphone.substring(8,12);
 		}
 
 		// creates a String of the meeting info as an HTML table row and returns it
@@ -69,12 +84,13 @@ class Meeting{
 		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+Meeting.formatSortableTime(this.stime)+"\">"+Meeting.formatTime(this.stime)+"</td>"; // String start time with numeric data-value for sorting
 		htmlstring = htmlstring+"<td class=\"oc col_oc\">"+open_char+"</td><td class=\"col_name\">"+newmname+"</td>"; // O or C and New Name
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
-		htmlstring = htmlstring+"<td class=\"col_address\"><a target=\"_blank\" href=\"http://maps.apple.com/?q="+wholeaddress+"\">"+this.address+" ["+this.zipcode+"]"+"</a></td>";
+		htmlstring = htmlstring+address_td;
 		htmlstring = htmlstring+"<td class=\"col_city\">"+this.city+"</td>"; // city
 		htmlstring = htmlstring+"<td class=\"col_location\">"+newlocation+"</td>"; // location
 		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td>"; // notes
 		htmlstring = htmlstring+"<td class=\"col_url\"><a target=\"_blank\" href=\""+newurl+"\">"+newurl+"</a></td>"; // conference_url
-		htmlstring = htmlstring+"<td class=\"col_phone\"><a target=\"_blank\" href=\"tel:1-"+newphone+"\">"+newphone+"</a></td>"; // conference_phone
+		htmlstring = htmlstring+"<td class=\"col_phone\"><a target=\"_blank\" href=\"tel:"+newphone+"\">"+newphone_display+"</a></td>"; // conference_phone
+		htmlstring = htmlstring+"<td class=\"col_venmo\">"+this.venmo+"</td>"; // venmo
 		htmlstring = htmlstring+"<td class=\"col_updated\">"+Meeting.formatUpdated(this.lupdate)+"</td></tr>"; // updated
 		
 		return htmlstring;
@@ -120,7 +136,7 @@ class Meeting{
 			mname_mod = mname_mod + " [Temporarily Closed at Location]";
 		}
 		else if(meeting.onl==1){
-			mname_mod = mname_mod + " [Face to Face at Location & Concurrent Online Meeting]";
+			mname_mod = mname_mod + " [Face to Face at Location & Online Meeting]";
 		}
 		else {
 			mname_mod = mname_mod + " [Face to Face at Location]";

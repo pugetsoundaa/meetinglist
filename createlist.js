@@ -4,7 +4,7 @@ function createMeetingList(meetingArray, urlParameters){
 	
 	let meetingcount = 0;
 	
-	let tableHeader = "<table class=\"pure-table pure-table-bordered footable table sml_table\">\n<thead>\n<tr>\n<th id=\"th_day\" class=\"oc col_day\" data-sort-ignore=\"true\">Day</th><th id=\"th_time\" class=\"col_time\" data-sort-initial=\"true\" data-type=\"numeric\">Time</th><th id=\"th_oc\" class=\"oc col_oc\" data-hide=\"tablet, phone\" data-sort-ignore=\"true\">O/C</th><th id=\"th_name\" class=\"col_name\" >Name</th><th id=\"th_address\" class=\"col_address\"  data-hide=\"tablet, phone\" data-sort-ignore=\"true\">Address</th><th id=\"th_city\" class=\"col_city\" >City</th><th id=\"th_location\" class=\"col_location\" data-hide=\"all\" data-sort-ignore=\"true\">Location</th><th id=\"th_notes\" class=\"col_notes\" data-hide=\"all\" data-sort-ignore=\"true\">Notes</th><th id=\"th_url\" class=\"col_url\" data-hide=\"all\" data-sort-ignore=\"true\">Online URL</th><th id=\"th_phone\" class=\"col_phone\" data-hide=\"all\" data-sort-ignore=\"true\">Online Phone</th><th id=\"th_updated\" class=\"col_updated\" data-hide=\"all\" data-sort-ignore=\"true\">Updated</th>\n</tr>\n</thead>\n<tbody>\n";
+	let tableHeader = "<table class=\"pure-table pure-table-bordered footable table sml_table\">\n<thead>\n<tr>\n<th id=\"th_day\" class=\"oc col_day\" data-sort-ignore=\"true\">Day</th><th id=\"th_time\" class=\"col_time\" data-sort-initial=\"true\" data-type=\"numeric\">Time</th><th id=\"th_oc\" class=\"oc col_oc\" data-hide=\"tablet, phone\" data-sort-ignore=\"true\">O/C</th><th id=\"th_name\" class=\"col_name\" >Name</th><th id=\"th_address\" class=\"col_address\"  data-hide=\"tablet, phone\" data-sort-ignore=\"true\">Address</th><th id=\"th_city\" class=\"col_city\" >City</th><th id=\"th_location\" class=\"col_location\" data-hide=\"all\" data-sort-ignore=\"true\">Location</th><th id=\"th_notes\" class=\"col_notes\" data-hide=\"all\" data-sort-ignore=\"true\">Notes</th><th id=\"th_url\" class=\"col_url\" data-hide=\"all\" data-sort-ignore=\"true\">Online URL</th><th id=\"th_phone\" class=\"col_phone\" data-hide=\"all\" data-sort-ignore=\"true\">Online Phone</th><th id=\"th_venmo\" class=\"col_venmo\" data-hide=\"all\" data-sort-ignore=\"true\">Venmo</th><th id=\"th_updated\" class=\"col_updated\" data-hide=\"all\" data-sort-ignore=\"true\">Updated</th>\n</tr>\n</thead>\n<tbody>\n";
 	let tableFooter = "</tbody>\n</table>\n";
 
 	let daysLabelsArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -269,6 +269,26 @@ function updateTitleDescription(urlParameters){
 		}
 		else {
 			subtitlestring = subtitlestring+"District "+getUrlVar("district");
+		}
+		searchterms++;
+	}
+		if(getUrlVar("facetoface")!=""){
+		titlestring = "Face to Face Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Face to Face";
+		}
+		else {
+			subtitlestring = subtitlestring+"Face to Face";
+		}
+		searchterms++;
+	}
+		if(getUrlVar("online")!=""){
+		titlestring = "Online Meetings";
+		if(searchterms > 0){
+			subtitlestring = subtitlestring+", Online";
+		}
+		else {
+			subtitlestring = subtitlestring+"Online";
 		}
 		searchterms++;
 	}

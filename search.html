@@ -26,6 +26,15 @@
         
             <!--the search form, sends to meeting-list page via GET-->
             <form class="pure-form" id="customsearchform" action="index.html" method="get">
+               <h3>Must Be (Leave Unchecked For All Meetings):</h3>
+                <label for="Facetoface" class="pure-checkbox search_checkbox">
+                    <input name="facetoface" id="Facetoface" type="checkbox" value="1">
+                    Face to Face
+                </label>
+                <label for="Online" class="pure-checkbox search_checkbox">
+                    <input name="online" id="Online" type="checkbox" value="1">
+                    Online
+                </label>
                 <!--name text box-->
                 <label for="Name" class="pure-checkbox"><h3>Name Must Contain:
                     <input type="text" id="Name" name="name" value=""></h3>

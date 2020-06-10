@@ -30,6 +30,8 @@ function filterMeetings(meetings, params) {
 		if (params.city && !(meetings[i].city.toLowerCase() == params.city.toLowerCase())) shouldKeep = false;
 		if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
 		if (params.district && !(meetings[i].district == params.district)) shouldKeep = false;
+		if (params.F2F && meetings[i].types.includes("TC")) shouldKeep = false;
+		if (params.online && !meetings[i].types.includes("ONL")) shouldKeep = false;
 
 		// sort into array for that day of the week if not tossed
 		if(meetings[i].day == "0" && shouldKeep){
@@ -78,6 +80,8 @@ function processURLQueryString(){
 		city: decodeQS(getUrlVar("city")),
 		zipcode: getUrlVar("zipcode"),
 		district: getUrlVar("district"),
+		F2F: getUrlVar("facetoface")==1,
+		online: getUrlVar("online")==1,
 	};
 	return urlParameters;
 }
