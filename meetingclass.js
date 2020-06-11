@@ -71,12 +71,16 @@ class Meeting{
 		if (this.conference_url == null) {
 			newurl = "";
 		}
+
+		let phone_td = "";
 		let newphone = this.conference_phone;
 		let newphone_display = "";	
-		if (this.conference_phone == null) {
+		if (this.conference_phone == "") {
 			newphone = "";
+			phone_td = "<td class=\"col_phone\"></td>";
 		} else {
 			newphone_display = newphone.substring(2,5)+"-"+newphone.substring(5,8)+"-"+newphone.substring(8,12);
+			phone_td = "<td class=\"col_phone\"><a target=\"_blank\" href=\"tel:"+newphone+"\">"+newphone_display+"</a></td>";
 		}
 
 		// creates a String of the meeting info as an HTML table row and returns it
@@ -84,12 +88,12 @@ class Meeting{
 		htmlstring = htmlstring+"<td class=\"col_time\" data-value=\""+Meeting.formatSortableTime(this.stime)+"\">"+Meeting.formatTime(this.stime)+"</td>"; // String start time with numeric data-value for sorting
 		htmlstring = htmlstring+"<td class=\"oc col_oc\">"+open_char+"</td><td class=\"col_name\">"+newmname+"</td>"; // O or C and New Name
 		// used apple maps, as if it's a non apple device it automatically goes to google maps
-		htmlstring = htmlstring+address_td;
+		htmlstring = htmlstring+address_td; // address
 		htmlstring = htmlstring+"<td class=\"col_city\">"+this.city+"</td>"; // city
 		htmlstring = htmlstring+"<td class=\"col_location\">"+newlocation+"</td>"; // location
 		htmlstring = htmlstring+"<td class=\"col_notes\">"+newnotes+"</td>"; // notes
 		htmlstring = htmlstring+"<td class=\"col_url\"><a target=\"_blank\" href=\""+newurl+"\">"+newurl+"</a></td>"; // conference_url
-		htmlstring = htmlstring+"<td class=\"col_phone\"><a target=\"_blank\" href=\"tel:"+newphone+"\">"+newphone_display+"</a></td>"; // conference_phone
+		htmlstring = htmlstring+phone_td; // conference_phone
 		htmlstring = htmlstring+"<td class=\"col_venmo\">"+this.venmo+"</td>"; // venmo
 		htmlstring = htmlstring+"<td class=\"col_updated\">"+Meeting.formatUpdated(this.lupdate)+"</td></tr>"; // updated
 		
