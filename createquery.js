@@ -30,7 +30,7 @@ function filterMeetings(meetings, params) {
 		if (params.city && !(meetings[i].city.toLowerCase() == params.city.toLowerCase())) shouldKeep = false;
 		if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
 		if (params.district && !(meetings[i].district == params.district)) shouldKeep = false;
-		if (params.F2F && meetings[i].types.includes("TC")) shouldKeep = false;
+		if (params.F2F && (meetings[i].types.includes("TC") || meetings[i].types.includes("NL"))) shouldKeep = false;
 		if (params.online && !meetings[i].types.includes("ONL")) shouldKeep = false;
 
 		// sort into array for that day of the week if not tossed
