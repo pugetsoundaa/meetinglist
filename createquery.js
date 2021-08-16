@@ -28,7 +28,9 @@ function filterMeetings(meetings, params) {
 		if (params.P && !meetings[i].types.includes("SP")) shouldKeep = false;
 		if (params.name && !(meetings[i].name.toLowerCase().includes(params.name.toLowerCase()))) shouldKeep = false;
 		if (params.city && !(meetings[i].city.toLowerCase() == params.city.toLowerCase())) shouldKeep = false;
-		if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
+		//v3 Google Sheets API
+		//if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
+		if (params.zipcode && !(meetings[i].postal_code == params.zipcode)) shouldKeep = false;
 		if (params.district && !(meetings[i].district == params.district)) shouldKeep = false;
 		if (params.F2F && (meetings[i].types.includes("TC") || meetings[i].types.includes("NL"))) shouldKeep = false;
 		if (params.online && !meetings[i].types.includes("ONL")) shouldKeep = false;

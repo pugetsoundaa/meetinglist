@@ -1,26 +1,55 @@
 // Translates Google Sheet JSON into Meeting Guide Format JSON
 
 function googlesheet(gs_id){
-	let gs_src = "https://spreadsheets.google.com/feeds/list/" + gs_id + "/1/public/values?alt=json";
+	//v3 Google Sheets API
+	//let gs_src = "https://spreadsheets.google.com/feeds/list/" + gs_id + "/1/public/values?alt=json";
+	
+	//v4 Google Sheets API
+	let gs_src = "https://sheets.googleapis.com/v4/spreadsheets/1QUCmXBisFvFx9s00_Wx3atgL_kMCmQXekRhTvTYIJy4/values/A1:ZZ?key=AIzaSyAuOQQws_uA02OoARkAm3SjTqJKn-LN_Qs";
 
 	$.getJSON(gs_src, function(data){
 		let meetings = [];
 
-		for (let i = 0; i < data.feed.entry.length; i++) {
+		//v3 Google Sheets API
+		//for (let i = 0; i < data.feed.entry.length; i++) {
+		
+		//v4 Google Sheets API	
+		//loop through all rows/meetings, skipping the first row of spreadsheet since it's the column headers
+		for (let i = 1; i < data.values.length; i++) {		
 			
+			//v3 Google Sheets API
 			//goes through raw data and creates a meeting object with properties for each column of the Google Sheet
-			let meeting = {};
+			/*let meeting = {};
 			$.map(data.feed.entry[i], function(v, i){
 				if (i.substr(0, 4) == 'gsx$') {
 					meeting[i.substr(4)] = v['$t'];
 				}
-			});
+			});*/
 
+			//v4 Google Sheets API
+			//creates the meeting object with properties based on the column headers
+			
+			let meeting = {};
+
+			for (let j = 0; j < data.values[0].length; j++) {
+				meeting[data.values[0][j]] = data.values[i][j];
+
+			}
+			console.log(meeting);
+
+			//v3 Google Sheets API
 			//use Google-generated slug if none was provided
-			if (!meeting.slug) {
+			/*if (!meeting.slug) {
 				let slug = data.feed.entry[i].id['$t'];
 				meeting.slug = slug.substring(slug.lastIndexOf('/') + 1);
+			}*/
+
+			//v4 Google Sheets API
+			if (!meeting.slug) {
+				meeting.slug = "psaa" + i;
 			}
+
+			console.log(meeting);
 
 			//convert time to HH:MM
 			let timeTemp = meeting.time.toLowerCase();

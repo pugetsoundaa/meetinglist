@@ -45,7 +45,9 @@ function createDayMeetingObjectArray(rawData){
 		let stime = rawData[i].time;
 		let address = rawData[i].address;
 		let city = rawData[i].city;
-		let zipcode = rawData[i].postalcode;
+		//v3 Google Sheets API
+		//let zipcode = rawData[i].postalcode;
+		let zipcode = rawData[i].postal_code;
 		let location = rawData[i].location;
 		let webnotes = rawData[i].notes;
 		let lupdate = rawData[i].updated;
@@ -64,8 +66,11 @@ function createDayMeetingObjectArray(rawData){
 		let tc = rawData[i].types.includes("TC");
 		let onl = rawData[i].types.includes("ONL");
 		let nl = rawData[i].types.includes("NL");
-		let conference_url = rawData[i].conferenceurl;
-		let conference_phone = rawData[i].conferencephone;
+		//v3 Google Sheets API
+		//let conference_url = rawData[i].conferenceurl;
+		//let conference_phone = rawData[i].conferencephone;
+		let conference_url = rawData[i].conference_url;
+		let conference_phone = rawData[i].conference_phone;
 		let venmo = rawData[i].venmo;
 		
 		// call the meeting object constructor
