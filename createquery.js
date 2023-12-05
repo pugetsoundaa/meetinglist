@@ -31,7 +31,7 @@ function filterMeetings(meetings, params) {
 		//v3 Google Sheets API
 		//if (params.zipcode && !(meetings[i].postalcode == params.zipcode)) shouldKeep = false;
 		if (params.zipcode && !(meetings[i].postal_code == params.zipcode)) shouldKeep = false;
-		if (params.district && !(meetings[i].district == params.district)) shouldKeep = false;
+		if (params.district && !(meetings[i].district == "District " + params.district)) shouldKeep = false;
 		if (params.F2F && (meetings[i].types.includes("TC") || meetings[i].types.includes("NL"))) shouldKeep = false;
 		if (params.online && !meetings[i].types.includes("ONL")) shouldKeep = false;
 
